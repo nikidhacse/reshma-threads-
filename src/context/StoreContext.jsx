@@ -7,6 +7,7 @@ export const StoreProvider = ({ children }) => {
   const [products, setProducts] = useState([])
   const [categories, setCategories] = useState([])
   const [orders, setOrders] = useState([])
+  const [comments, setComments] = useState([])
   const [settings, setSettings] = useState({})
   const [wishlist, setWishlist] = useState([])
   const [loading, setLoading] = useState(true)
@@ -31,16 +32,18 @@ export const StoreProvider = ({ children }) => {
   const refreshData = async () => {
     setLoading(true)
     try {
-      const [prodsData, catsData, ordsData, setsData] = await Promise.all([
+      const [prodsData, catsData, ordsData, setsData, commsData] = await Promise.all([
         storeService.getProducts(),
         storeService.getCategories(),
         storeService.getOrders(),
-        storeService.getSettings()
+        storeService.getSettings(),
+        storeService.getComments()
       ])
       setProducts(prodsData)
       setCategories(catsData)
       setOrders(ordsData)
       setSettings(setsData)
+      setComments(commsData)
     } catch (err) {
       console.error('Failed loading store data:', err)
     } finally {
@@ -50,10 +53,9 @@ export const StoreProvider = ({ children }) => {
 
   useEffect(() => {
     // Version-based cache bust: if data version changed, clear stale localStorage
-    const DATA_VERSION = 'v3-lavender-flagship'
+    const DATA_VERSION = 'v4-admin-collections-comments'
     const storedVersion = localStorage.getItem('rts_data_version')
     if (storedVersion !== DATA_VERSION) {
-      // Clear old product/category/order/settings cache
       ;['rts_products', 'rts_categories', 'rts_orders', 'rts_settings'].forEach(k => localStorage.removeItem(k))
       localStorage.setItem('rts_data_version', DATA_VERSION)
     }
@@ -96,14 +98,14 @@ export const StoreProvider = ({ children }) => {
   const saveProduct = async (productData) => {
     const saved = await storeService.saveProduct(productData)
     await refreshData()
-    showToast(productData.id ? 'Product updated successfully' : 'New product published to studio catalog! ✨')
+    showToast(productData.id ? 'Collection updated successfully' : 'New collection added to boutique showcase! ✨')
     return saved
   }
 
   const deleteProduct = async (id) => {
     await storeService.deleteProduct(id)
     await refreshData()
-    showToast('Product removed from catalog', 'info')
+    showToast('Collection removed from catalog', 'info')
   }
 
   const saveCategory = async (catData) => {
@@ -116,6 +118,13 @@ export const StoreProvider = ({ children }) => {
     await storeService.deleteCategory(id)
     await refreshData()
     showToast('Category deleted', 'info')
+  }
+
+  const postComment = async (commentData) => {
+    const newComm = await storeService.addComment(commentData)
+    await refreshData()
+    showToast('Your question/comment has been submitted! Our studio will respond shortly. ✨')
+    return newComm
   }
 
   const submitOrder = async (orderData) => {
@@ -141,6 +150,7 @@ export const StoreProvider = ({ children }) => {
       products,
       categories,
       orders,
+      comments,
       settings,
       wishlist,
       loading,
@@ -165,6 +175,7 @@ export const StoreProvider = ({ children }) => {
       deleteProduct,
       saveCategory,
       deleteCategory,
+      postComment,
       submitOrder,
       updateOrderStatus,
       updateStoreSettings,

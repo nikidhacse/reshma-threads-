@@ -87,6 +87,27 @@ const INITIAL_ORDERS = [
   }
 ]
 
+const INITIAL_COMMENTS = [
+  {
+    id: 'c-1',
+    name: 'Pooja Sundaram',
+    email: 'pooja@example.com',
+    message: 'Can the sweetheart cut-work neck on the Royal Lavender set be tailored with a higher neck depth for my saree?',
+    design_code: 'RTS-SIG-001',
+    reply: 'Yes, absolutely! Every blouse is stitched 100% to your neck depth & armhole measurements. Share your requirements on WhatsApp.',
+    created_at: '2026-07-29T12:30:00Z'
+  },
+  {
+    id: 'c-2',
+    name: 'Anitha Krishnan',
+    email: 'anitha.k@example.com',
+    message: 'Do you offer outstation courier delivery with pre-pleated saree pin settings to Bangalore?',
+    design_code: 'General Query',
+    reply: 'Yes! We box-fold and pin-set pre-pleated sarees securely and courier pan India with full tracking.',
+    created_at: '2026-07-29T14:15:00Z'
+  }
+]
+
 const INITIAL_SETTINGS = {
   whatsapp_number: '+919003539707',
   studio_email: 'reshmathreadsstudio@gmail.com',
@@ -98,10 +119,9 @@ const INITIAL_SETTINGS = {
 
 const getStorageItem = (key, fallback) => {
   try {
-    const data = localStorage.getItem(`rts_${key}`)
-    return data ? JSON.parse(data) : fallback
-  } catch (err) {
-    console.error('Error reading localStorage:', err)
+    const item = localStorage.getItem(`rts_${key}`)
+    return item ? JSON.parse(item) : fallback
+  } catch {
     return fallback
   }
 }
@@ -110,7 +130,7 @@ const setStorageItem = (key, value) => {
   try {
     localStorage.setItem(`rts_${key}`, JSON.stringify(value))
   } catch (err) {
-    console.error('Error writing localStorage:', err)
+    console.error('LocalStorage write failed:', err)
   }
 }
 
@@ -122,26 +142,24 @@ export const storeService = {
         const { data, error } = await supabase.from('products').select('*').order('created_at', { ascending: false })
         if (!error && data && data.length > 0) return data
       } catch (err) {
-        console.warn('Supabase fetch failed, using local store:', err)
+        console.warn('Supabase product fetch failed, fallback to local storage:', err)
       }
     }
     return getStorageItem('products', INITIAL_PRODUCTS)
   },
 
   async getProductBySlug(slug) {
-    const products = await this.getProducts()
-    return products.find(p => p.slug === slug || p.id === slug) || null
+    const prods = await this.getProducts()
+    return prods.find(p => p.slug === slug) || prods[0] || null
   },
 
   async saveProduct(productData) {
-    const isEdit = Boolean(productData.id)
+    const isEdit = !!productData.id
     const newProduct = {
       ...productData,
       id: productData.id || `prod-${Date.now()}`,
-      slug: productData.slug || (productData.name || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, ''),
-      sku: productData.sku || `RTS-SIG-${Math.floor(100 + Math.random() * 900)}`,
-      created_at: productData.created_at || new Date().toISOString(),
-      updated_at: new Date().toISOString()
+      slug: productData.slug || (productData.name || '').toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+      created_at: productData.created_at || new Date().toISOString()
     }
 
     if (isSupabaseConfigured) {
@@ -152,12 +170,12 @@ export const storeService = {
           await supabase.from('products').insert([newProduct])
         }
       } catch (err) {
-        console.warn('Supabase product save failed:', err)
+        console.warn('Supabase save product failed:', err)
       }
     }
 
     const currentList = getStorageItem('products', INITIAL_PRODUCTS)
-    const updatedList = isEdit
+    const updatedList = isEdit 
       ? currentList.map(p => p.id === newProduct.id ? newProduct : p)
       : [newProduct, ...currentList]
 
@@ -184,7 +202,7 @@ export const storeService = {
   async getCategories() {
     if (isSupabaseConfigured) {
       try {
-        const { data, error } = await supabase.from('categories').select('*').order('name')
+        const { data, error } = await supabase.from('categories').select('*')
         if (!error && data && data.length > 0) return data
       } catch (err) {
         console.warn('Supabase categories fetch failed:', err)
@@ -194,7 +212,7 @@ export const storeService = {
   },
 
   async saveCategory(categoryData) {
-    const isEdit = Boolean(categoryData.id)
+    const isEdit = !!categoryData.id
     const newCategory = {
       ...categoryData,
       id: categoryData.id || `cat-${Date.now()}`,
@@ -235,6 +253,27 @@ export const storeService = {
     const updatedList = currentList.filter(c => c.id !== categoryId)
     setStorageItem('categories', updatedList)
     return true
+  },
+
+  // --- VISITOR COMMENTS & QUESTIONS ---
+  async getComments() {
+    return getStorageItem('comments', INITIAL_COMMENTS)
+  },
+
+  async addComment(commentData) {
+    const newComment = {
+      id: `c-${Date.now()}`,
+      name: commentData.name || 'Boutique Visitor',
+      email: commentData.email || '',
+      message: commentData.message,
+      design_code: commentData.design_code || 'General Query',
+      reply: null,
+      created_at: new Date().toISOString()
+    }
+    const currentList = getStorageItem('comments', INITIAL_COMMENTS)
+    const updatedList = [newComment, ...currentList]
+    setStorageItem('comments', updatedList)
+    return newComment
   },
 
   // --- ORDERS / ENQUIRIES ---
@@ -321,7 +360,7 @@ export const storeService = {
     const rawNumber = (whatsappNumber || INITIAL_SETTINGS.whatsapp_number).replace(/[^0-9]/g, '')
     const designCode = product.sku || product.id || 'RTS-SIG-001'
     
-    let message = `Hi Reshma Threads Studio! 👋\n\nI love your Flagship Boutique Collection!\n\n✨ *Collection:* ${product.name}\n🏷️ *Ref Code:* #${designCode}\n💰 *Price Guidance:* ₹${Number(product.price).toLocaleString('en-IN')}\n`
+    let message = `Hi Reshma Threads Studio! 👋\n\nI love your Boutique Collection!\n\n✨ *Collection:* ${product.name}\n🏷️ *Ref Code:* #${designCode}\n💰 *Price Guidance:* ₹${Number(product.price).toLocaleString('en-IN')}\n`
 
     if (customDetails.angle) {
       message += `🔍 *View Angle:* ${customDetails.angle}\n`
