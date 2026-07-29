@@ -1,0 +1,310 @@
+import React from 'react'
+import { useStore } from '../context/StoreContext'
+import { CollectionShowcase } from '../components/CollectionShowcase'
+import { SketchToFinishSection } from '../components/SketchToFinishSection'
+import { FAQSection } from '../components/FAQSection'
+import { TestimonialsSection } from '../components/TestimonialsSection'
+import { InstagramFeedSection } from '../components/InstagramFeedSection'
+import { FloatingWhatsApp } from '../components/FloatingWhatsApp'
+import { storeService } from '../services/storeService'
+import { MessageCircle, Sparkles, ArrowRight, Package, Clock, Truck, Scissors, Instagram, ChevronRight } from 'lucide-react'
+
+export const HomePage = () => {
+  const { products, settings, navigateTo } = useStore()
+
+  // The single flagship collection
+  const flagship = products[0] || null
+
+  const handleWhatsApp = () => {
+    const rawNumber = (settings.whatsapp_number || '+919003539707').replace(/[^0-9]/g, '')
+    const msg = encodeURIComponent(
+      "Hi Reshma Threads Studio! 👋 I saw your Royal Lavender Signature Boutique Set and I'd love to discuss a custom order. Can you guide me?"
+    )
+    window.open(`https://wa.me/${rawNumber}?text=${msg}`, '_blank')
+  }
+
+  return (
+    <div className="relative">
+
+      {/* ══════════════════════════════════════
+          1. FLAGSHIP COLLECTION HERO
+      ══════════════════════════════════════ */}
+      {flagship && <CollectionShowcase product={flagship} />}
+
+      {/* ══════════════════════════════════════
+          2. MARQUEE TRUST BAND
+      ══════════════════════════════════════ */}
+      <div className="bg-ebony py-3.5 overflow-hidden border-y border-gold/20">
+        <div className="marquee-track">
+          {[...Array(2)].map((_, outerIdx) => (
+            <div key={outerIdx} className="flex items-center gap-0">
+              {[
+                '✦ Custom Aari Blouses',
+                '✦ Handcrafted Maggam Work',
+                '✦ Pre-Pleated Sarees',
+                '✦ Cut-Work Embroidery',
+                '✦ Pan India Shipping',
+                '✦ Bespoke Tailoring',
+                '✦ Bridal Collections',
+                '✦ No Fixed Products',
+                '✦ Custom Consultation',
+              ].map((text, i) => (
+                <span key={i} className="text-gold text-xs font-semibold tracking-widest uppercase px-8 whitespace-nowrap">
+                  {text}
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ══════════════════════════════════════
+          3. ABOUT THE BOUTIQUE STRIP
+      ══════════════════════════════════════ */}
+      <section className="py-20 bg-pearl relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+            {/* Stacked image collage */}
+            <div className="relative h-[480px]">
+              {/* Back card */}
+              <div className="absolute top-4 left-8 w-[55%] h-[75%] rounded-3xl overflow-hidden shadow-2xl border border-gold/30 rotate-[-4deg]">
+                <img src="/lavender_sleeve_cuff.jpg" alt="Sleeve Cuff Detail" className="w-full h-full object-cover" />
+              </div>
+              {/* Front card */}
+              <div className="absolute bottom-0 right-0 w-[65%] h-[80%] rounded-3xl overflow-hidden shadow-2xl border-2 border-gold/50">
+                <img src="/lavender_blouse_backneck.jpg" alt="Back Neck Detail" className="w-full h-full object-cover" />
+              </div>
+              {/* Floating badge */}
+              <div className="absolute top-1/2 left-[42%] -translate-x-1/2 -translate-y-1/2 z-30 bg-gold text-ebony px-4 py-2 rounded-2xl text-xs font-bold shadow-xl border border-gold/30 rotate-[2deg] whitespace-nowrap">
+                ✦ Every stitch by hand
+              </div>
+            </div>
+
+            {/* Text */}
+            <div className="space-y-6">
+              <div className="luxury-divider">
+                <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-gold">Our Atelier</span>
+              </div>
+
+              <h2 className="font-serif text-4xl lg:text-5xl font-bold text-ebony leading-tight">
+                Where Every Thread <br />
+                <span className="italic font-light text-gold">Tells a Story</span>
+              </h2>
+
+              <p className="text-ebony/75 text-base leading-relaxed">
+                Reshma Threads Studio is not a shop — it's an <strong>atelier</strong>. Based in Chennai, we craft bespoke blouses and saree sets tailored to your exact style, occasion, and measurements. Every design begins as a conversation and ends as a cherished keepsake.
+              </p>
+
+              <p className="text-ebony/65 text-sm leading-relaxed">
+                The Royal Lavender Signature Set above is our flagship launch. More collections will be revealed soon. In the meantime, share your inspiration and we'll create something exclusively for you.
+              </p>
+
+              <button
+                onClick={handleWhatsApp}
+                className="inline-flex items-center gap-2 bg-ebony hover:bg-gold text-gold hover:text-ebony font-bold px-7 py-3.5 rounded-2xl text-sm transition-all duration-300 shadow-lg border border-gold/30"
+              >
+                <MessageCircle className="w-4 h-4" />
+                Start a Custom Conversation
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════
+          4. DETAIL PHOTO GRID — ALL 5 ANGLES
+      ══════════════════════════════════════ */}
+      <section className="py-16 bg-[#F7F4EF]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <div className="text-center mb-10">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-gold bg-ebony border border-gold/30 mb-3">
+              <Sparkles className="w-3 h-3" />
+              Collection Detail Shots
+            </span>
+            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-ebony">
+              Every Angle, Every Detail
+            </h2>
+            <p className="text-ebony/60 text-sm mt-2 max-w-xl mx-auto">
+              Hover over each photo to inspect the craftsmanship up close.
+            </p>
+          </div>
+
+          {/* Masonry-style 5-photo grid */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+
+            {/* Full set — large */}
+            <div className="boutique-card col-span-2 md:col-span-1 row-span-2">
+              <div className="reveal-image aspect-[3/4] overflow-hidden">
+                <img src="/lavender_collection_set.jpg" alt="Complete Set" className="card-img w-full h-full object-cover" />
+              </div>
+              <div className="p-4">
+                <p className="text-[11px] uppercase tracking-widest font-bold text-brown mb-1">Complete Set</p>
+                <h3 className="font-serif font-bold text-ebony text-sm">Blouse + Saree Together</h3>
+              </div>
+            </div>
+
+            <div className="boutique-card">
+              <div className="reveal-image aspect-square overflow-hidden">
+                <img src="/lavender_blouse_backneck.jpg" alt="Back Neck" className="card-img w-full h-full object-cover" />
+              </div>
+              <div className="p-4">
+                <p className="text-[11px] uppercase tracking-widest font-bold text-brown mb-1">Blouse</p>
+                <h3 className="font-serif font-bold text-ebony text-sm">Sweetheart Cut-Work Back Neck</h3>
+              </div>
+            </div>
+
+            <div className="boutique-card">
+              <div className="reveal-image aspect-square overflow-hidden">
+                <img src="/lavender_pleated_saree.jpg" alt="Pre-Pleated Saree" className="card-img w-full h-full object-cover" />
+              </div>
+              <div className="p-4">
+                <p className="text-[11px] uppercase tracking-widest font-bold text-brown mb-1">Saree</p>
+                <h3 className="font-serif font-bold text-ebony text-sm">Pre-Pleated Kanjivaram Silk</h3>
+              </div>
+            </div>
+
+            <div className="boutique-card">
+              <div className="reveal-image aspect-square overflow-hidden">
+                <img src="/lavender_sleeve_cuff.jpg" alt="Sleeve Cuff" className="card-img w-full h-full object-cover" />
+              </div>
+              <div className="p-4">
+                <p className="text-[11px] uppercase tracking-widest font-bold text-brown mb-1">Embroidery</p>
+                <h3 className="font-serif font-bold text-ebony text-sm">Silver Brocade Sleeve Cuff</h3>
+              </div>
+            </div>
+
+            <div className="boutique-card">
+              <div className="reveal-image aspect-square overflow-hidden">
+                <img src="/lavender_sleeve_detail.jpg" alt="Sleeve Detail" className="card-img w-full h-full object-cover" />
+              </div>
+              <div className="p-4">
+                <p className="text-[11px] uppercase tracking-widest font-bold text-brown mb-1">Detail</p>
+                <h3 className="font-serif font-bold text-ebony text-sm">Pearl & Mirror Aari Work</h3>
+              </div>
+            </div>
+
+          </div>
+
+          {/* CTA */}
+          <div className="text-center mt-10">
+            <button
+              onClick={handleWhatsApp}
+              className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-8 py-3.5 rounded-2xl text-sm shadow-lg transition-all hover:-translate-y-0.5"
+            >
+              <MessageCircle className="w-5 h-5 fill-white" />
+              I want this set — Order on WhatsApp
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════
+          5. HOW IT WORKS — 4 STEPS
+      ══════════════════════════════════════ */}
+      <section className="py-20 bg-ebony text-pearl relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_50%,rgba(123,94,167,0.15),transparent)] pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+          <div className="text-center mb-14">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-gold bg-gold/15 border border-gold/30 mb-3">
+              <Scissors className="w-3 h-3" />
+              The Bespoke Process
+            </span>
+            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-gold">
+              How Your Order Works
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { num: '01', icon: MessageCircle, title: 'Chat Consultation', desc: 'Share your saree color, occasion date, preferred neck style, and sleeve preference on WhatsApp.' },
+              { num: '02', icon: Scissors, title: 'Custom Design', desc: 'We sketch and plan your unique blouse design — mix elements, add your own inspiration, or trust us fully.' },
+              { num: '03', icon: Clock, title: 'Handcrafted in 10–15 Days', desc: 'Every bead, thread, and cut-work is done by skilled artisans over 10–15 working days.' },
+              { num: '04', icon: Truck, title: 'Delivered to You', desc: 'Your bespoke creation is securely packaged and couriered pan India with tracking.' },
+            ].map((step, i) => {
+              const Icon = step.icon
+              return (
+                <div key={i} className="bg-pearl/8 border border-gold/20 rounded-3xl p-6 hover:border-gold/50 transition-all duration-300 hover:bg-gold/5 group">
+                  <div className="flex items-start justify-between mb-4">
+                    <span className="font-serif text-5xl font-bold text-gold/25 group-hover:text-gold/50 transition-colors">{step.num}</span>
+                    <div className="w-10 h-10 rounded-xl bg-gold/15 border border-gold/30 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-ebony transition-all">
+                      <Icon className="w-5 h-5" />
+                    </div>
+                  </div>
+                  <h3 className="font-serif text-lg font-bold text-pearl mb-2">{step.title}</h3>
+                  <p className="text-pearl/60 text-xs leading-relaxed">{step.desc}</p>
+                </div>
+              )
+            })}
+          </div>
+
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════
+          6. SKETCH-TO-FINISH
+      ══════════════════════════════════════ */}
+      <SketchToFinishSection />
+
+      {/* ══════════════════════════════════════
+          7. COMING SOON TEASER
+      ══════════════════════════════════════ */}
+      <section className="py-20 bg-[#F7F4EF]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-gold bg-ebony border border-gold/30">
+            <Sparkles className="w-3 h-3" />
+            More Collections Coming Soon
+          </span>
+          <h2 className="font-serif text-4xl font-bold text-ebony">
+            The Gallery is Just Getting Started
+          </h2>
+          <p className="text-ebony/65 text-base leading-relaxed max-w-2xl mx-auto">
+            Our admin is curating more exclusive collections — Bridal Maggam Sets, Festival Aari Blouses, Teal Silk Ensembles, and more. Stay tuned or follow us on Instagram for previews!
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <a
+              href="https://www.instagram.com/reshma_threads_studio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 via-pink-500 to-amber-500 text-white font-bold px-7 py-3.5 rounded-2xl text-sm shadow-lg hover:opacity-95 transition-all hover:-translate-y-0.5"
+            >
+              <Instagram className="w-4 h-4" />
+              Follow on Instagram
+            </a>
+            <button
+              onClick={handleWhatsApp}
+              className="inline-flex items-center gap-2 bg-ebony text-gold font-bold px-7 py-3.5 rounded-2xl text-sm border border-gold/30 hover:bg-gold hover:text-ebony transition-all"
+            >
+              <MessageCircle className="w-4 h-4" />
+              Request a Custom Design
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════
+          8. TESTIMONIALS
+      ══════════════════════════════════════ */}
+      <TestimonialsSection />
+
+      {/* ══════════════════════════════════════
+          9. FAQ
+      ══════════════════════════════════════ */}
+      <FAQSection />
+
+      {/* ══════════════════════════════════════
+          10. INSTAGRAM FEED
+      ══════════════════════════════════════ */}
+      <InstagramFeedSection />
+
+      {/* Floating WhatsApp */}
+      <FloatingWhatsApp />
+
+    </div>
+  )
+}

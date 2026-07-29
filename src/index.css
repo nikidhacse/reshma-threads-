@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #FAF8F5;
+    color: #1A1A1A;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, .font-serif {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+/* =========================================
+   GLASS & SURFACE PANELS
+   ========================================= */
+.glass-panel {
+  background: rgba(250, 248, 245, 0.88);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border: 1px solid rgba(197, 160, 89, 0.18);
+}
+
+.glass-panel-dark {
+  background: rgba(26, 26, 26, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+}
+
+/* =========================================
+   GOLD TEXT & BACKGROUNDS
+   ========================================= */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #C5A059 0%, #E8D08A 50%, #9E7E3B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gold-gradient-bg {
+  background: linear-gradient(135deg, #C5A059 0%, #D4AF37 60%, #9E7E3B 100%);
+}
+
+.lavender-gradient-bg {
+  background: linear-gradient(135deg, #7B5EA7 0%, #9B6FCF 50%, #5C4688 100%);
+}
+
+/* =========================================
+   BOUTIQUE HERO ANIMATIONS
+   ========================================= */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes spinGold {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes pulseGold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.5); }
+  50% { box-shadow: 0 0 0 12px rgba(197, 160, 89, 0); }
+}
+
+@keyframes waveText {
+  0%, 100% { letter-spacing: 0.3em; }
+  50% { letter-spacing: 0.4em; }
+}
+
+/* =========================================
+   UTILITY ANIMATION CLASSES
+   ========================================= */
+.animate-float { animation: floatY 6s ease-in-out infinite; }
+.animate-fade-slide-up { animation: fadeSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.animate-fade-in { animation: fadeSlideUp 0.5s ease forwards; }
+.animate-scale-in { animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.animate-wave-text { animation: waveText 3s ease-in-out infinite; }
+.animate-pulse-gold { animation: pulseGold 2s ease-in-out infinite; }
+.animate-spin-slow { animation: spinGold 12s linear infinite; }
+
+/* =========================================
+   BOUTIQUE CARD STYLES
+   ========================================= */
+.boutique-card {
+  position: relative;
+  background: #FFFFFF;
+  border: 1px solid rgba(197, 160, 89, 0.2);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 24px rgba(26, 26, 26, 0.06);
+}
+
+.boutique-card:hover {
+  border-color: rgba(197, 160, 89, 0.55);
+  box-shadow: 0 20px 60px rgba(140, 109, 83, 0.15), 0 0 0 1px rgba(197, 160, 89, 0.25);
+  transform: translateY(-6px);
+}
+
+.boutique-card .card-img {
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.boutique-card:hover .card-img {
+  transform: scale(1.07);
+}
+
+/* =========================================
+   IMAGE REVEAL EFFECT
+   ========================================= */
+.reveal-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.reveal-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(26,26,26,0.7) 100%);
+  pointer-events: none;
+}
+
+/* =========================================
+   LUXURY DIVIDER
+   ========================================= */
+.luxury-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.luxury-divider::before,
+.luxury-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.5), transparent);
+}
+
+/* =========================================
+   COLLECTION VIEWER
+   ========================================= */
+.collection-thumbnail {
+  position: relative;
+  cursor: pointer;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  transition: all 0.25s ease;
+}
+
+.collection-thumbnail.active,
+.collection-thumbnail:hover {
+  border-color: #C5A059;
+  box-shadow: 0 4px 16px rgba(197, 160, 89, 0.35);
+  transform: scale(1.04);
+}
+
+/* =========================================
+   MARQUEE BANNER
+   ========================================= */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* =========================================
+   CUSTOM SCROLLBAR
+   ========================================= */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #FAF8F5; }
+::-webkit-scrollbar-thumb { background: #D4C4A8; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #C5A059; }
+
+/* =========================================
+   MISCELLANEOUS HELPERS
+   ========================================= */
+.scrollbar-none::-webkit-scrollbar { display: none; }
+.scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+
+.text-shadow-gold {
+  text-shadow: 0 2px 20px rgba(197, 160, 89, 0.4);
+}
+
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+}
