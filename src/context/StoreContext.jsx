@@ -53,7 +53,7 @@ export const StoreProvider = ({ children }) => {
 
   useEffect(() => {
     // Version-based cache bust: if data version changed, clear stale localStorage
-    const DATA_VERSION = 'v4-admin-collections-comments'
+    const DATA_VERSION = 'v5-no-prices-maroon-saree'
     const storedVersion = localStorage.getItem('rts_data_version')
     if (storedVersion !== DATA_VERSION) {
       ;['rts_products', 'rts_categories', 'rts_orders', 'rts_settings'].forEach(k => localStorage.removeItem(k))
