@@ -136,7 +136,7 @@ const GalleryCard = ({ product, settings, toggleWishlist, isWishlisted, onQuickV
       <div className="p-5">
         <div className="flex items-center justify-between mb-1">
           <span className="text-[10px] uppercase tracking-wider font-bold text-brown">{product.category_name}</span>
-          <span className="font-serif font-bold text-gold text-sm">₹{Number(product.price).toLocaleString('en-IN')}</span>
+          <span className="text-[10px] font-semibold text-gold bg-gold/10 px-2 py-0.5 rounded-full border border-gold/20">Bespoke</span>
         </div>
         <h3 className="font-serif text-base font-bold text-ebony line-clamp-2 mb-3 group-hover:text-gold transition-colors">
           {product.name}
@@ -146,7 +146,7 @@ const GalleryCard = ({ product, settings, toggleWishlist, isWishlisted, onQuickV
           className="w-full bg-ebony hover:bg-emerald-700 text-gold hover:text-white font-semibold py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 transition-all border border-gold/30"
         >
           <MessageCircle className="w-4 h-4" />
-          Request Similar Design
+          Inquire Price on WhatsApp
         </button>
       </div>
 

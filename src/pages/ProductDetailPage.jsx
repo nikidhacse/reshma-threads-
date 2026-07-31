@@ -185,20 +185,13 @@ export const ProductDetailPage = () => {
               {product.name}
             </h1>
 
-            <div className="flex items-baseline gap-4 pt-1">
-              <span className="text-3xl font-extrabold text-ebony">₹{formattedPrice}</span>
-              {formattedOrigPrice && (
-                <span className="text-base text-gray-400 line-through">₹{formattedOrigPrice}</span>
-              )}
-              {product.in_stock ? (
-                <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full">
-                  In Stock ({product.stock_quantity || 5} Available)
-                </span>
-              ) : (
-                <span className="text-xs font-semibold text-amber-700 bg-amber-50 border border-amber-200 px-3 py-1 rounded-full">
-                  Made to Order (10-14 days)
-                </span>
-              )}
+            <div className="flex items-center gap-3 pt-1">
+              <span className="text-sm font-bold text-gold bg-gold/10 border border-gold/30 px-3.5 py-1.5 rounded-full">
+                💬 Inquire Price on WhatsApp
+              </span>
+              <span className="text-xs font-semibold text-amber-700 bg-amber-50 border border-amber-200 px-3 py-1 rounded-full">
+                Made to Order (10-14 days)
+              </span>
             </div>
 
             <p className="text-sm text-gray-600 font-light leading-relaxed pt-2 border-t border-sand-dark">

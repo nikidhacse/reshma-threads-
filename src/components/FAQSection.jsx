@@ -24,8 +24,8 @@ export const FAQSection = () => {
       a: "Yes, we ship pan-India and internationally! For clients outside Chennai, you can courier your unstitched fabric or saree directly to our Chennai studio along with a well-fitting sample blouse. We also offer guided virtual measurement assistance via WhatsApp video call."
     },
     {
-      q: "What are the charges for custom stitching & embroidery?",
-      a: "Charges depend on the embroidery density, work hours, and tailoring complexity. Basic Aari border work & custom stitching starts from ₹1,800 - ₹2,500. Heavy Maggam, cut-work, and bridal blouses range between ₹3,200 to ₹8,000+. Saree pre-pleating starts from ₹500. DM us on WhatsApp with your design idea for an exact estimate!"
+      q: "How do I get a price quote for custom stitching & embroidery?",
+      a: "Because every piece is 100% customized to your fabric, embroidery density, and fitting preferences, we don't fix rigid prices on our website. Simply click 'Inquire Price on WhatsApp' on any design or send us your inspiration image, and we will give you an exact instant quote!"
     }
   ]
 

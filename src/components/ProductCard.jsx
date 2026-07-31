@@ -89,8 +89,8 @@ export const ProductCard = ({ product }) => {
             <span className="text-[11px] uppercase tracking-wider font-semibold text-brown">
               {product.category_name || 'Bespoke Design'}
             </span>
-            <span className="text-xs font-serif font-bold text-gold">
-              Starting ₹{Number(product.price).toLocaleString('en-IN')}
+            <span className="text-[10px] font-semibold text-gold bg-gold/10 px-2 py-0.5 rounded-full border border-gold/20">
+              Custom Order
             </span>
           </div>
 
@@ -110,7 +110,7 @@ export const ProductCard = ({ product }) => {
             className="w-full bg-ebony hover:bg-emerald-700 text-gold hover:text-white font-semibold py-2.5 px-4 rounded-xl text-xs flex items-center justify-center gap-2 transition-all shadow-sm border border-gold/30 group-hover:border-emerald-600"
           >
             <MessageCircle className="w-4 h-4" />
-            <span>Request Similar Design</span>
+            <span>Inquire Price on WhatsApp</span>
           </button>
         </div>
       </div>

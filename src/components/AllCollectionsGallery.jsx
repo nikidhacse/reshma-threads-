@@ -218,10 +218,9 @@ const CollectionCard = ({ product, settings, toggleWishlist, isWishlisted, onQui
             </h3>
           </div>
           <div className="text-right shrink-0">
-            <p className="font-serif font-bold text-gold text-base">₹{Number(product.price).toLocaleString('en-IN')}</p>
-            {product.original_price && (
-              <p className="text-ebony/40 line-through text-xs">₹{Number(product.original_price).toLocaleString('en-IN')}</p>
-            )}
+            <span className="text-[10px] font-semibold text-gold bg-gold/10 px-2 py-0.5 rounded-full border border-gold/20">
+              Bespoke
+            </span>
           </div>
         </div>
 
@@ -234,7 +233,7 @@ const CollectionCard = ({ product, settings, toggleWishlist, isWishlisted, onQui
           className="w-full bg-ebony hover:bg-emerald-700 text-gold hover:text-white font-semibold py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 transition-all border border-gold/30 hover:border-transparent"
         >
           <MessageCircle className="w-4 h-4" />
-          Order / Request Similar
+          Inquire Price on WhatsApp
         </button>
       </div>
     </article>

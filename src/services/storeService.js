@@ -42,8 +42,6 @@ const INITIAL_PRODUCTS = [
     id: 'prod-sig-001',
     name: 'Royal Lavender Kanjivaram Silk Saree & Handcrafted Cut-Work Aari Blouse Set',
     slug: 'royal-lavender-kanjivaram-silk-saree-cutwork-blouse-set',
-    price: 8500,
-    original_price: 10500,
     category_id: 'cat-1',
     category_name: 'Signature Collections',
     description: 'Exclusive signature boutique set featuring a pre-pleated Royal Lavender Kanjivaram silk saree with rich silver zari woven pallu and crisp pleats. Paired with a bespoke raw silk blouse highlighting a sweetheart window cut-work back neck studded with mirrors and white pearls, finished with silver brocade sleeve cuffs and double bead piping.',
@@ -63,6 +61,29 @@ const INITIAL_PRODUCTS = [
       '/lavender_sleeve_cuff.jpg',
       '/lavender_sleeve_detail.jpg',
       '/lavender_pleated_saree.jpg'
+    ],
+    created_at: new Date().toISOString()
+  },
+  {
+    id: 'prod-sig-002',
+    name: 'Deep Maroon & Gold Zari Handfolded Kanjivaram Silk Saree',
+    slug: 'deep-maroon-gold-zari-kanjivaram-silk-saree',
+    category_id: 'cat-1',
+    category_name: 'Signature Collections',
+    description: 'Regal deep maroon Kanjivaram silk saree featuring intricate gold lotus motif butas woven across the body, crisp fan-pleated fold, and a heavy gold zari border.',
+    fabric_info: 'Pure Kanjivaram Silk + Fine Gold Zari Weave',
+    care_instructions: 'Dry clean only. Store wrapped in cotton saree muslin bag.',
+    sizes: ['Custom Saree Pre-Pleating Available'],
+    colors: ['Deep Maroon & Gold Zari'],
+    stock_quantity: 3,
+    in_stock: true,
+    is_featured: true,
+    is_best_seller: true,
+    is_new_arrival: true,
+    sku: 'RTS-SIG-002',
+    images: [
+      '/maroon_kanjivaram_1.jpg',
+      '/maroon_kanjivaram_2.jpg'
     ],
     created_at: new Date().toISOString()
   }
@@ -360,7 +381,7 @@ export const storeService = {
     const rawNumber = (whatsappNumber || INITIAL_SETTINGS.whatsapp_number).replace(/[^0-9]/g, '')
     const designCode = product.sku || product.id || 'RTS-SIG-001'
     
-    let message = `Hi Reshma Threads Studio! 👋\n\nI love your Boutique Collection!\n\n✨ *Collection:* ${product.name}\n🏷️ *Ref Code:* #${designCode}\n💰 *Price Guidance:* ₹${Number(product.price).toLocaleString('en-IN')}\n`
+    let message = `Hi Reshma Threads Studio! 👋\n\nI saw this design on your website:\n✨ *Design:* ${product.name}\n🏷️ *Ref Code:* #${designCode}\n`
 
     if (customDetails.angle) {
       message += `🔍 *View Angle:* ${customDetails.angle}\n`
@@ -369,7 +390,7 @@ export const storeService = {
       message += `📝 *Notes:* ${customDetails.notes}\n`
     }
 
-    message += `\nI'd like to place an order / discuss my blouse measurements and pre-pleating options. Please guide me!`
+    message += `\nHow much will it be to recreate this? Please guide me!`
     
     const encodedMessage = encodeURIComponent(message)
     return `https://wa.me/${rawNumber}?text=${encodedMessage}`

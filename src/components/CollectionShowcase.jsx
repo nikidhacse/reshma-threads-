@@ -93,17 +93,11 @@ export const CollectionShowcase = ({ product }) => {
               ))}
             </ul>
 
-            {/* Price */}
-            <div className="flex items-baseline gap-3">
-              <span className="font-serif text-3xl font-bold text-gold">
-                ₹{Number(product.price).toLocaleString('en-IN')}
+            {/* Price Enquiry Badge */}
+            <div className="flex items-center gap-3 bg-gold/10 border border-gold/30 rounded-2xl px-4 py-2.5 w-fit">
+              <span className="text-xs font-semibold text-gold tracking-wide">
+                💬 Chat on WhatsApp to get exact price & customization options
               </span>
-              {product.original_price && (
-                <span className="text-pearl/40 line-through text-base">
-                  ₹{Number(product.original_price).toLocaleString('en-IN')}
-                </span>
-              )}
-              <span className="text-[11px] text-pearl/60">custom order</span>
             </div>
 
             {/* CTAs */}
@@ -113,7 +107,7 @@ export const CollectionShowcase = ({ product }) => {
                 className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-7 py-3.5 rounded-2xl text-sm flex items-center gap-2 shadow-lg transition-all duration-300 hover:-translate-y-0.5"
               >
                 <MessageCircle className="w-5 h-5 fill-white" />
-                Order on WhatsApp
+                Inquire Price on WhatsApp
               </button>
               <button
                 onClick={() => toggleWishlist(product.id)}

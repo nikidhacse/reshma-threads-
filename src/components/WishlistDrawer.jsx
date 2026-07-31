@@ -92,8 +92,8 @@ export const WishlistDrawer = () => {
                       >
                         {product.name}
                       </h4>
-                      <p className="text-[11px] font-bold text-gold mt-0.5">
-                        Est. ₹{Number(product.price).toLocaleString('en-IN')}
+                      <p className="text-[10px] font-semibold text-gold mt-0.5">
+                        Custom Design
                       </p>
                     </div>
 

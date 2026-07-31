@@ -90,7 +90,7 @@ export const SearchModal = () => {
                         </div>
                       </div>
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-bold text-ebony">₹{Number(p.price).toLocaleString('en-IN')}</span>
+                        <span className="text-[10px] font-semibold text-gold bg-gold/10 px-2 py-0.5 rounded-full border border-gold/20">Custom</span>
                         <ArrowRight className="w-4 h-4 text-gold" />
                       </div>
                     </div>

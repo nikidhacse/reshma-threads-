@@ -102,8 +102,10 @@ export const QuickViewModal = () => {
                 {quickViewProduct.name}
               </h2>
 
-              <p className="text-sm font-serif font-bold text-gold mt-1">
-                Price Guidance: Starting from ₹{Number(quickViewProduct.price).toLocaleString('en-IN')}
+              <p className="text-xs font-semibold text-gold mt-1 flex items-center gap-1.5">
+                <span>✦ Bespoke Custom Order</span>
+                <span className="text-ebony/40">•</span>
+                <span className="text-ebony/70">Inquire price on WhatsApp</span>
               </p>
             </div>
 
