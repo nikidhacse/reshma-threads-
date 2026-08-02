@@ -39,6 +39,32 @@ const INITIAL_CATEGORIES = [
 
 const INITIAL_PRODUCTS = [
   {
+    id: 'prod-sig-001',
+    name: 'Royal Lavender Kanjivaram Silk Saree & Handcrafted Cut-Work Aari Blouse Set',
+    slug: 'royal-lavender-kanjivaram-silk-saree-cutwork-blouse-set',
+    category_id: 'cat-1',
+    category_name: 'Signature Collections',
+    description: 'Exclusive signature boutique set featuring a pre-pleated Royal Lavender Kanjivaram silk saree with rich silver zari woven pallu and crisp pleats. Paired with a bespoke raw silk blouse highlighting a sweetheart window cut-work back neck studded with mirrors and white pearls, finished with silver brocade sleeve cuffs and double bead piping.',
+    fabric_info: 'Pure Kanjivaram Brocade Silk Saree + Raw Silk Blouse Base with Hand Aari, Pearl & Mirror Embroidery',
+    care_instructions: 'Dry clean only. Store wrapped in cotton saree muslin bag.',
+    sizes: ['Custom Tailored Blouse + Pre-Pleated Saree'],
+    colors: ['Royal Lavender & Silver Zari'],
+    stock_quantity: 5,
+    in_stock: true,
+    is_featured: true,
+    is_best_seller: true,
+    is_new_arrival: true,
+    sku: 'RTS-SIG-001',
+    images: [
+      '/lavender_collection_set.jpg',
+      '/lavender_blouse_backneck.jpg',
+      '/lavender_sleeve_cuff.jpg',
+      '/lavender_sleeve_detail.jpg',
+      '/lavender_pleated_saree.jpg'
+    ],
+    created_at: new Date().toISOString()
+  },
+  {
     id: 'prod-spec-001',
     name: 'Rani Magenta Hand-Embroidered Lattice Sequin Lehenga & Organza Dupatta Set',
     slug: 'rani-magenta-hand-embroidered-lattice-sequin-lehenga-set',
@@ -81,32 +107,6 @@ const INITIAL_PRODUCTS = [
     sku: 'RTS-SPEC-002',
     images: [
       '/special_crimson_halfsaree.jpg'
-    ],
-    created_at: new Date().toISOString()
-  },
-  {
-    id: 'prod-sig-001',
-    name: 'Royal Lavender Kanjivaram Silk Saree & Handcrafted Cut-Work Aari Blouse Set',
-    slug: 'royal-lavender-kanjivaram-silk-saree-cutwork-blouse-set',
-    category_id: 'cat-1',
-    category_name: 'Signature Collections',
-    description: 'Exclusive signature boutique set featuring a pre-pleated Royal Lavender Kanjivaram silk saree with rich silver zari woven pallu and crisp pleats. Paired with a bespoke raw silk blouse highlighting a sweetheart window cut-work back neck studded with mirrors and white pearls, finished with silver brocade sleeve cuffs and double bead piping.',
-    fabric_info: 'Pure Kanjivaram Brocade Silk Saree + Raw Silk Blouse Base with Hand Aari, Pearl & Mirror Embroidery',
-    care_instructions: 'Dry clean only. Store wrapped in cotton saree muslin bag.',
-    sizes: ['Custom Tailored Blouse + Pre-Pleated Saree'],
-    colors: ['Royal Lavender & Silver Zari'],
-    stock_quantity: 5,
-    in_stock: true,
-    is_featured: true,
-    is_best_seller: true,
-    is_new_arrival: true,
-    sku: 'RTS-SIG-001',
-    images: [
-      '/lavender_collection_set.jpg',
-      '/lavender_blouse_backneck.jpg',
-      '/lavender_sleeve_cuff.jpg',
-      '/lavender_sleeve_detail.jpg',
-      '/lavender_pleated_saree.jpg'
     ],
     created_at: new Date().toISOString()
   },

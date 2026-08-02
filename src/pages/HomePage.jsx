@@ -12,8 +12,8 @@ import { MessageCircle, Sparkles, Clock, Truck, Scissors, Instagram } from 'luci
 export const HomePage = () => {
   const { products, settings, trackWhatsAppClick } = useStore()
 
-  // Flagship is the first (and currently only) product
-  const flagship = products[0] || null
+  // Flagship Collection is Royal Lavender Signature Set (prod-sig-001)
+  const flagship = products.find(p => p.id === 'prod-sig-001') || products[0] || null
 
   const handleWhatsApp = () => {
     trackWhatsAppClick('HomePage Banner')
