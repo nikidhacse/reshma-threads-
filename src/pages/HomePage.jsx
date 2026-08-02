@@ -6,6 +6,7 @@ import { SketchToFinishSection } from '../components/SketchToFinishSection'
 import { FAQSection } from '../components/FAQSection'
 import { CustomerInquiriesSection } from '../components/CustomerInquiriesSection'
 import { FloatingWhatsApp } from '../components/FloatingWhatsApp'
+import { OwnerStoryShowcase } from '../components/OwnerStoryShowcase'
 import { MessageCircle, Sparkles, Clock, Truck, Scissors, Instagram } from 'lucide-react'
 
 export const HomePage = () => {
@@ -32,21 +33,17 @@ export const HomePage = () => {
       {flagship && <CollectionShowcase product={flagship} />}
 
       {/* ══════════════════════════════════════
-          2. MARQUEE TRUST BAND
+          2. MARQUEE ANNOUNCEMENT BAR
       ══════════════════════════════════════ */}
-      <div className="bg-ebony py-3.5 overflow-hidden border-y border-gold/20">
-        <div className="marquee-track">
-          {[...Array(2)].map((_, outerIdx) => (
-            <div key={outerIdx} className="flex items-center">
+      <div className="bg-ebony text-gold py-3 overflow-hidden border-y border-gold/30">
+        <div className="flex animate-marquee space-x-8">
+          {[1, 2, 3, 4].map((group) => (
+            <div key={group} className="flex space-x-8 shrink-0">
               {[
-                '✦ Custom Aari Blouses',
-                '✦ Handcrafted Maggam Work',
-                '✦ Pre-Pleated Sarees',
-                '✦ Cut-Work Embroidery',
-                '✦ Pan India Shipping',
-                '✦ Bespoke Tailoring',
-                '✦ Bridal Collections',
-                '✦ No Fixed Products',
+                '✦ 100% Hand-Tailored Bespoke Couture',
+                '✦ Worldwide Shipping & Express Delivery',
+                '✦ Signature Aari & Zardozi Craftsmanship',
+                '✦ Direct WhatsApp Studio Consultation (+91 7708521531)',
                 '✦ Custom Consultation',
               ].map((text, i) => (
                 <span key={i} className="text-gold text-xs font-semibold tracking-widest uppercase px-8 whitespace-nowrap">
@@ -59,43 +56,49 @@ export const HomePage = () => {
       </div>
 
       {/* ══════════════════════════════════════
-          3. ABOUT THE BOUTIQUE
+          3. ABOUT THE BOUTIQUE & OUR STORY
       ══════════════════════════════════════ */}
       <section className="py-20 bg-pearl relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-            {/* Stacked image collage */}
-            <div className="relative h-[480px]">
-              <div className="absolute top-4 left-8 w-[55%] h-[75%] rounded-3xl overflow-hidden shadow-2xl border border-gold/30 rotate-[-4deg]">
-                <img src="/lavender_sleeve_cuff.jpg" alt="Sleeve Cuff Detail" className="w-full h-full object-cover" />
+            {/* Stacked owner image collage */}
+            <div className="relative h-[500px]">
+              <div className="absolute top-4 left-4 w-[60%] h-[80%] rounded-3xl overflow-hidden shadow-2xl border-2 border-gold/40 rotate-[-3deg] z-10">
+                <img src="/special_magenta_lehenga.jpg" alt="Founder wearing Royal Magenta Lehenga" className="w-full h-full object-cover object-top" />
+                <div className="absolute bottom-3 left-3 bg-black/80 backdrop-blur-sm text-gold px-3 py-1 rounded-xl text-[10px] font-bold">
+                  👑 Founder in Royal Magenta
+                </div>
               </div>
-              <div className="absolute bottom-0 right-0 w-[65%] h-[80%] rounded-3xl overflow-hidden shadow-2xl border-2 border-gold/50">
-                <img src="/lavender_blouse_backneck.jpg" alt="Back Neck Detail" className="w-full h-full object-cover" />
+              <div className="absolute bottom-2 right-4 w-[60%] h-[78%] rounded-3xl overflow-hidden shadow-2xl border-2 border-gold/60 rotate-[3deg] z-20">
+                <img src="/special_crimson_halfsaree.jpg" alt="Founder wearing Crimson Half Saree" className="w-full h-full object-cover object-top" />
+                <div className="absolute bottom-3 right-3 bg-black/80 backdrop-blur-sm text-amber-300 px-3 py-1 rounded-xl text-[10px] font-bold">
+                  ✨ Owner in Crimson Half-Saree
+                </div>
               </div>
-              <div className="absolute top-1/2 left-[42%] -translate-x-1/2 -translate-y-1/2 z-30 bg-gold text-ebony px-4 py-2 rounded-2xl text-xs font-bold shadow-xl border border-gold/30 rotate-[2deg] whitespace-nowrap">
-                ✦ Every stitch by hand
+              <div className="absolute top-1/2 left-[45%] -translate-x-1/2 -translate-y-1/2 z-30 bg-gold text-ebony px-4 py-2 rounded-2xl text-xs font-bold shadow-xl border border-gold/30 rotate-[-1deg] whitespace-nowrap">
+                ✦ Styled & Worn by Our Owner
               </div>
             </div>
 
             {/* Text */}
             <div className="space-y-6">
               <div className="luxury-divider">
-                <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-gold">Our Atelier</span>
+                <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-gold">Our Atelier & Founder Story</span>
               </div>
 
               <h2 className="font-serif text-4xl lg:text-5xl font-bold text-ebony leading-tight">
                 Where Every Thread <br />
-                <span className="italic font-light text-gold">Tells a Story</span>
+                <span className="italic font-light text-gold">Tells Our Story</span>
               </h2>
 
               <p className="text-ebony/75 text-base leading-relaxed">
-                Reshma Threads Studio is not a shop — it's an <strong>atelier</strong>. Based in Chennai, we craft bespoke blouses and saree sets tailored to your exact style, occasion, and measurements. Every design begins as a conversation and ends as a cherished keepsake.
+                Reshma Threads Studio is an exclusive <strong>couture atelier</strong> based in Chennai. Every outfit created here — including the signature models worn by our founder above — is designed to perfection.
               </p>
 
               <p className="text-ebony/65 text-sm leading-relaxed">
-                Browse our live collections below — each can be recreated or fully customised to your measurements, fabric, and embroidery preference.
+                <strong>Loved what you see on our founder?</strong> We can recreate these exact designs or tailor them to your personal measurements, preferred colors, and custom embroidery.
               </p>
 
               <button

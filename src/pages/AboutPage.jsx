@@ -1,6 +1,7 @@
 import React from 'react'
 import { useStore } from '../context/StoreContext'
 import { Sparkles, Award, Heart, Shield, ArrowRight } from 'lucide-react'
+import { OwnerStoryShowcase } from '../components/OwnerStoryShowcase'
 
 export const AboutPage = () => {
   const { navigateTo } = useStore()
@@ -45,12 +46,19 @@ export const AboutPage = () => {
 
         <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border border-gold/30">
           <img
-            src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1000&auto=format&fit=crop"
-            alt="Studio Heritage"
+            src="/special_magenta_lehenga.jpg"
+            alt="Studio Founder Signature Model"
             className="w-full h-full object-cover object-top"
           />
+          <div className="absolute bottom-4 left-4 right-4 bg-ebony/90 backdrop-blur-md p-3.5 rounded-2xl border border-gold/30 text-white text-xs">
+            <p className="font-serif font-bold text-gold">👑 Owner's Signature Model</p>
+            <p className="text-[11px] text-gray-300 font-light">Hand-embroidered zardozi lehenga set worn by our studio founder.</p>
+          </div>
         </div>
       </div>
+
+      {/* Owner Story Showcase Component */}
+      <OwnerStoryShowcase />
 
       {/* CTA Box */}
       <div className="bg-ebony text-pearl rounded-3xl p-10 text-center space-y-4 border border-gold/30">
@@ -70,3 +78,4 @@ export const AboutPage = () => {
     </div>
   )
 }
+
