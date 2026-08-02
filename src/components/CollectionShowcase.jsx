@@ -5,7 +5,7 @@ import { storeService } from '../services/storeService'
 
 // The centrepiece of the boutique — a full-bleed, editorial collection showcase
 export const CollectionShowcase = ({ product }) => {
-  const { toggleWishlist, isWishlisted, settings, setIsWishlistOpen } = useStore()
+  const { toggleWishlist, isWishlisted, settings, setIsWishlistOpen, trackWhatsAppClick } = useStore()
   const [activeIndex, setActiveIndex] = useState(0)
   const [isZoomed, setIsZoomed] = useState(false)
   const [zoomPos, setZoomPos] = useState({ x: 50, y: 50 })
@@ -36,6 +36,7 @@ export const CollectionShowcase = ({ product }) => {
   }
 
   const handleWhatsApp = () => {
+    trackWhatsAppClick('Flagship Collection Showcase', product.name)
     const link = storeService.generateWhatsAppLink(settings.whatsapp_number, product, {
       angle: angleLabels[activeIndex] || 'Full View'
     })

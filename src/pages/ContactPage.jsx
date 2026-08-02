@@ -4,13 +4,13 @@ import { FloatingWhatsApp } from '../components/FloatingWhatsApp'
 import { MessageCircle, Phone, Mail, MapPin, Instagram, Sparkles, Send, CheckCircle2 } from 'lucide-react'
 
 export const ContactPage = () => {
-  const { settings, submitOrder, showToast } = useStore()
+  const { submitOrder, showToast, settings, trackWhatsAppClick } = useStore()
 
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     email: '',
-    sareeType: '',
+    sareeType: 'Kanjivaram Silk',
     functionDate: '',
     notes: ''
   })
@@ -20,7 +20,7 @@ export const ContactPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (!formData.name || !formData.phone) {
-      showToast('Please provide your name and phone number', 'error')
+      showToast('Please enter your name and phone number', 'error')
       return
     }
 
@@ -37,9 +37,10 @@ export const ContactPage = () => {
 
       setSubmitted(true)
       showToast('Inquiry sent successfully! We will contact you on WhatsApp.', 'success')
+      trackWhatsAppClick('Contact Page Form Submission', `Custom Blouse (${formData.sareeType || 'General'})`)
 
       // Also trigger WhatsApp link for user convenience
-      const rawNumber = (settings.whatsapp_number || '+919003539707').replace(/[^0-9]/g, '')
+      const rawNumber = (settings.whatsapp_number || '+917708521531').replace(/[^0-9]/g, '')
       const msg = encodeURIComponent(
         `Hi Reshma Threads Studio! 👋\n\nI just submitted a consultation request on your website:\n\n👤 *Name:* ${formData.name}\n📞 *Phone:* ${formData.phone}\n🥻 *Saree Type:* ${formData.sareeType || 'Custom'}\n📅 *Function Date:* ${formData.functionDate || 'N/A'}\n📝 *Notes:* ${formData.notes}`
       )
@@ -49,7 +50,7 @@ export const ContactPage = () => {
     }
   }
 
-  const rawNumber = (settings.whatsapp_number || '+919003539707').replace(/[^0-9]/g, '')
+  const rawNumber = (settings.whatsapp_number || '+917708521531').replace(/[^0-9]/g, '')
   const whatsappUrl = `https://wa.me/${rawNumber}?text=${encodeURIComponent("Hi Reshma! I'd like to book a custom blouse stitching consultation.")}`
 
   return (
@@ -96,10 +97,11 @@ export const ContactPage = () => {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackWhatsAppClick('Contact Page Direct Chat')}
                 className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-6 rounded-2xl text-xs flex items-center justify-center gap-2 shadow-lg transition-all"
               >
                 <MessageCircle className="w-4 h-4 fill-current" />
-                <span>Chat on WhatsApp ({settings.whatsapp_number || '+91 90035 39707'})</span>
+                <span>Chat on WhatsApp ({settings.whatsapp_number || '+91 77085 21531'})</span>
               </a>
             </div>
 
@@ -111,7 +113,7 @@ export const ContactPage = () => {
                 <Phone className="w-4 h-4 text-gold shrink-0 mt-0.5" />
                 <div>
                   <p className="font-semibold">Phone / Call</p>
-                  <p className="text-ebony/70">{settings.studio_phone || '+91 90035 39707'}</p>
+                  <p className="text-ebony/70">{settings.studio_phone || '+91 77085 21531'}</p>
                 </div>
               </div>
 

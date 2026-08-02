@@ -39,6 +39,52 @@ const INITIAL_CATEGORIES = [
 
 const INITIAL_PRODUCTS = [
   {
+    id: 'prod-spec-001',
+    name: 'Rani Magenta Hand-Embroidered Lattice Sequin Lehenga & Organza Dupatta Set',
+    slug: 'rani-magenta-hand-embroidered-lattice-sequin-lehenga-set',
+    category_id: 'cat-1',
+    category_name: 'Signature Collections',
+    description: 'An opulent studio masterpiece creation featuring a vibrant Rani Magenta sheer-neck blouse meticulously embroidered with hand-sewn silver lattice grid sequin work, geometric bead piping, and full-length embellished sleeves. Paired with a cascading, weightless organza flare lehenga skirt and delicate matching sheer net dupatta trimmed with hand-crafted gold zari lace.',
+    fabric_info: 'Premium Silk Organza Flare + Sheer Net Blouse Base with Hand Lattice Sequin & Zari Embroidery',
+    care_instructions: 'Dry clean only. Store wrapped in cotton garment bag.',
+    sizes: ['Bespoke Custom Tailored to Your Measurements'],
+    colors: ['Rani Magenta Pink & Silver Sequin'],
+    stock_quantity: 3,
+    in_stock: true,
+    is_featured: true,
+    is_best_seller: true,
+    is_new_arrival: true,
+    is_special_edition: true,
+    sku: 'RTS-SPEC-001',
+    images: [
+      '/special_magenta_lehenga.jpg'
+    ],
+    created_at: new Date().toISOString()
+  },
+  {
+    id: 'prod-spec-002',
+    name: 'Royal Crimson & Ivory Heritage Silk Langa Voni (Half-Saree) Set',
+    slug: 'royal-crimson-ivory-heritage-silk-langa-voni-half-saree-set',
+    category_id: 'cat-1',
+    category_name: 'Signature Collections',
+    description: 'A timeless South Indian luxury heritage piece featuring an elegant ivory silk pleated skirt bordered with rich crimson zari weaving. Paired with a royal crimson raw silk blouse detailing heavy gold brocade zari woven sleeves, and draped gracefully with a traditional tasselled crimson silk voni (dupatta) with gold lace borders.',
+    fabric_info: 'Pure Ivory Silk Base + Crimson Brocade Zari Sleeves & Hand-Crafted Tasselled Silk Voni',
+    care_instructions: 'Dry clean only. Store wrapped in saree muslin bag.',
+    sizes: ['Custom Tailored Blouse + Pleated Skirt'],
+    colors: ['Royal Crimson Maroon & Ivory Silk'],
+    stock_quantity: 4,
+    in_stock: true,
+    is_featured: true,
+    is_best_seller: true,
+    is_new_arrival: true,
+    is_special_edition: true,
+    sku: 'RTS-SPEC-002',
+    images: [
+      '/special_crimson_halfsaree.jpg'
+    ],
+    created_at: new Date().toISOString()
+  },
+  {
     id: 'prod-sig-001',
     name: 'Royal Lavender Kanjivaram Silk Saree & Handcrafted Cut-Work Aari Blouse Set',
     slug: 'royal-lavender-kanjivaram-silk-saree-cutwork-blouse-set',
@@ -94,7 +140,7 @@ const INITIAL_ORDERS = [
     id: 'ord-901',
     order_ref: 'RTS-2026-0901',
     customer_name: 'Samyuktha Ramesh',
-    customer_phone: '+91 90035 39707',
+    customer_phone: '+91 77085 21531',
     customer_email: 'samyuktha.r@example.com',
     product_id: 'prod-sig-001',
     product_name: 'Royal Lavender Kanjivaram Silk Saree & Handcrafted Cut-Work Blouse Set',
@@ -130,9 +176,9 @@ const INITIAL_COMMENTS = [
 ]
 
 const INITIAL_SETTINGS = {
-  whatsapp_number: '+919003539707',
+  whatsapp_number: '+917708521531',
   studio_email: 'reshmathreadsstudio@gmail.com',
-  studio_phone: '+91 90035 39707',
+  studio_phone: '+91 77085 21531',
   studio_address: 'Chennai, Tamil Nadu, India — DM for studio appointment',
   announcement_banner: '✨ Flagship Collection Live: Royal Lavender Silk Saree & Cut-Work Blouse Set • Pan India Shipping',
   instagram_handle: 'reshma_threads_studio'
@@ -358,7 +404,16 @@ export const storeService = {
         console.warn('Supabase settings fetch failed:', err)
       }
     }
-    return getStorageItem('settings', INITIAL_SETTINGS)
+    const settings = getStorageItem('settings', INITIAL_SETTINGS)
+    if (!settings.whatsapp_number || settings.whatsapp_number.includes('9003539707') || settings.whatsapp_number.includes('9876543210')) {
+      settings.whatsapp_number = '+917708521531'
+      setStorageItem('settings', settings)
+    }
+    if (!settings.studio_phone || settings.studio_phone.includes('90035') || settings.studio_phone.includes('98765')) {
+      settings.studio_phone = '+91 77085 21531'
+      setStorageItem('settings', settings)
+    }
+    return settings
   },
 
   async updateSettings(newSettings) {
@@ -394,5 +449,133 @@ export const storeService = {
     
     const encodedMessage = encodeURIComponent(message)
     return `https://wa.me/${rawNumber}?text=${encodedMessage}`
+  },
+
+  // --- ANALYTICS & VISITOR TRACKING ---
+  async getAnalytics() {
+    return getStorageItem('analytics', {
+      totalPageViews: 142,
+      pageViews: {
+        home: 84,
+        shop: 38,
+        contact: 20
+      },
+      whatsappClicks: {
+        total: 29,
+        bySource: {
+          'Floating WhatsApp Widget': 11,
+          'Flagship Collection Showcase': 8,
+          'Boutique Gallery': 5,
+          'Contact Page Consultation': 3,
+          'Navbar Header': 2
+        },
+        logs: [
+          { id: 'w-101', source: 'Flagship Collection Showcase', product: 'Royal Lavender Kanjivaram Silk Saree Set', timestamp: '2026-08-01T14:22:00Z' },
+          { id: 'w-102', source: 'Floating WhatsApp Widget', product: 'General Studio Inquiry', timestamp: '2026-08-01T15:10:00Z' },
+          { id: 'w-103', source: 'Boutique Gallery', product: 'Deep Maroon & Gold Zari Kanjivaram Saree', timestamp: '2026-08-01T16:05:00Z' },
+          { id: 'w-104', source: 'Contact Page Consultation', product: 'Custom Blouse Consultation', timestamp: '2026-08-01T16:45:00Z' },
+          { id: 'w-105', source: 'Floating WhatsApp Widget', product: 'General Studio Inquiry', timestamp: '2026-08-01T17:02:00Z' }
+        ]
+      },
+      productViews: {
+        'prod-sig-001': 95,
+        'prod-sig-002': 47
+      }
+    })
+  },
+
+  async trackPageView(pageName) {
+    const current = await this.getAnalytics()
+    const pageKey = pageName || 'home'
+    const updated = {
+      ...current,
+      totalPageViews: (current.totalPageViews || 0) + 1,
+      pageViews: {
+        ...current.pageViews,
+        [pageKey]: ((current.pageViews && current.pageViews[pageKey]) || 0) + 1
+      }
+    }
+    setStorageItem('analytics', updated)
+    return updated
+  },
+
+  async trackWhatsAppClick(source = 'Website Link', productName = null) {
+    const current = await this.getAnalytics()
+    const whatsappData = current.whatsappClicks || { total: 0, bySource: {}, logs: [] }
+    const newLog = {
+      id: `w-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
+      source: source || 'Website Link',
+      product: productName || 'General Studio Inquiry',
+      timestamp: new Date().toISOString()
+    }
+    
+    const updated = {
+      ...current,
+      whatsappClicks: {
+        total: (whatsappData.total || 0) + 1,
+        bySource: {
+          ...whatsappData.bySource,
+          [source]: ((whatsappData.bySource && whatsappData.bySource[source]) || 0) + 1
+        },
+        logs: [newLog, ...(whatsappData.logs || [])].slice(0, 100)
+      }
+    }
+    setStorageItem('analytics', updated)
+    return updated
+  },
+
+  async trackProductView(productId) {
+    if (!productId) return
+    const current = await this.getAnalytics()
+    const productViews = current.productViews || {}
+    const updated = {
+      ...current,
+      productViews: {
+        ...productViews,
+        [productId]: (productViews[productId] || 0) + 1
+      }
+    }
+    setStorageItem('analytics', updated)
+    return updated
+  },
+
+  async replyComment(commentId, replyText) {
+    const currentList = getStorageItem('comments', INITIAL_COMMENTS)
+    const updatedList = currentList.map(c => c.id === commentId ? { ...c, reply: replyText } : c)
+    setStorageItem('comments', updatedList)
+    return updatedList
+  },
+
+  async deleteComment(commentId) {
+    const currentList = getStorageItem('comments', INITIAL_COMMENTS)
+    const updatedList = currentList.filter(c => c.id !== commentId)
+    setStorageItem('comments', updatedList)
+    return updatedList
+  },
+
+  async deleteOrder(orderId) {
+    if (isSupabaseConfigured) {
+      try {
+        await supabase.from('orders').delete().eq('id', orderId)
+      } catch (err) {
+        console.warn('Supabase delete order failed:', err)
+      }
+    }
+    const currentList = getStorageItem('orders', INITIAL_ORDERS)
+    const updatedList = currentList.filter(o => o.id !== orderId)
+    setStorageItem('orders', updatedList)
+    return true
+  },
+
+  async resetAnalytics() {
+    const resetData = {
+      totalPageViews: 0,
+      pageViews: {},
+      whatsappClicks: { total: 0, bySource: {}, logs: [] },
+      productViews: {}
+    }
+    setStorageItem('analytics', resetData)
+    return resetData
   }
 }
+

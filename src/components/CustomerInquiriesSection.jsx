@@ -26,7 +26,7 @@ export const CustomerInquiriesSection = () => {
     setTimeout(() => setSubmitted(false), 5000)
   }
 
-  const rawNumber = (settings.whatsapp_number || '+919003539707').replace(/[^0-9]/g, '')
+  const rawNumber = (settings.whatsapp_number || '+917708521531').replace(/[^0-9]/g, '')
 
   return (
     <section className="py-20 bg-pearl relative overflow-hidden border-t border-gold/20">

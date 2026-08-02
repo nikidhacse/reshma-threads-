@@ -9,13 +9,14 @@ import { FloatingWhatsApp } from '../components/FloatingWhatsApp'
 import { MessageCircle, Sparkles, Clock, Truck, Scissors, Instagram } from 'lucide-react'
 
 export const HomePage = () => {
-  const { products, settings } = useStore()
+  const { products, settings, trackWhatsAppClick } = useStore()
 
   // Flagship is the first (and currently only) product
   const flagship = products[0] || null
 
   const handleWhatsApp = () => {
-    const rawNumber = (settings.whatsapp_number || '+919003539707').replace(/[^0-9]/g, '')
+    trackWhatsAppClick('HomePage Banner')
+    const rawNumber = (settings.whatsapp_number || '+917708521531').replace(/[^0-9]/g, '')
     const msg = encodeURIComponent(
       "Hi Reshma Threads Studio! 👋 I saw your boutique collection and I'd love to discuss a custom order. Can you guide me?"
     )

@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS orders (
 -- 5. Studio Settings Table
 CREATE TABLE IF NOT EXISTS settings (
   id INT PRIMARY KEY DEFAULT 1,
-  whatsapp_number VARCHAR(50) DEFAULT '+919876543210',
+  whatsapp_number VARCHAR(50) DEFAULT '+917708521531',
   studio_email VARCHAR(255) DEFAULT 'contact@reshmathreads.com',
   studio_address TEXT DEFAULT '102 Luxury Fashion Boulevard, Jubilee Hills, Hyderabad',
   announcement_banner TEXT DEFAULT '✨ Complimentary Custom Tailoring on Orders above ₹15,000',
@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS settings (
 
 -- Initial Settings Row
 INSERT INTO settings (id, whatsapp_number, studio_email, studio_address, announcement_banner)
-VALUES (1, '+919876543210', 'contact@reshmathreads.com', '102 Luxury Fashion Boulevard, Jubilee Hills, Hyderabad', '✨ Complimentary Custom Tailoring on Orders above ₹15,000')
+VALUES (1, '+917708521531', 'contact@reshmathreads.com', '102 Luxury Fashion Boulevard, Jubilee Hills, Hyderabad', '✨ Complimentary Custom Tailoring on Orders above ₹15,000')
 ON CONFLICT (id) DO NOTHING;
 
 -- 6. Storage Bucket for Product Images

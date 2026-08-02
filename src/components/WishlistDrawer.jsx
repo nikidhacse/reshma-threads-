@@ -18,7 +18,7 @@ export const WishlistDrawer = () => {
   const savedProducts = products.filter(p => wishlist.includes(p.id))
 
   const handleBulkInquiry = () => {
-    const rawNumber = (settings.whatsapp_number || '+919003539707').replace(/[^0-9]/g, '')
+    const rawNumber = (settings.whatsapp_number || '+917708521531').replace(/[^0-9]/g, '')
     
     let msg = `Hi Reshma Threads Studio! 👋\n\nI have saved these designs on your website inspiration board and would like to get a quote/consultation:\n\n`
     savedProducts.forEach((p, idx) => {

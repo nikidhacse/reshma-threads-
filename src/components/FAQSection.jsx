@@ -33,7 +33,7 @@ export const FAQSection = () => {
     setOpenIndex(openIndex === index ? null : index)
   }
 
-  const rawNumber = (settings.whatsapp_number || '+919003539707').replace(/[^0-9]/g, '')
+  const rawNumber = (settings.whatsapp_number || '+917708521531').replace(/[^0-9]/g, '')
   const faqWhatsappUrl = `https://wa.me/${rawNumber}?text=${encodeURIComponent("Hi Reshma! I have a question about custom stitching / ordering that wasn't answered in the FAQ.")}`
 
   return (

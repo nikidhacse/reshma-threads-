@@ -10,6 +10,12 @@ export const StoreProvider = ({ children }) => {
   const [comments, setComments] = useState([])
   const [settings, setSettings] = useState({})
   const [wishlist, setWishlist] = useState([])
+  const [analytics, setAnalytics] = useState({
+    totalPageViews: 0,
+    pageViews: {},
+    whatsappClicks: { total: 0, bySource: {}, logs: [] },
+    productViews: {}
+  })
   const [loading, setLoading] = useState(true)
 
   // Navigation & Page State
@@ -32,18 +38,20 @@ export const StoreProvider = ({ children }) => {
   const refreshData = async () => {
     setLoading(true)
     try {
-      const [prodsData, catsData, ordsData, setsData, commsData] = await Promise.all([
+      const [prodsData, catsData, ordsData, setsData, commsData, analyticsData] = await Promise.all([
         storeService.getProducts(),
         storeService.getCategories(),
         storeService.getOrders(),
         storeService.getSettings(),
-        storeService.getComments()
+        storeService.getComments(),
+        storeService.getAnalytics()
       ])
       setProducts(prodsData)
       setCategories(catsData)
       setOrders(ordsData)
       setSettings(setsData)
       setComments(commsData)
+      setAnalytics(analyticsData)
     } catch (err) {
       console.error('Failed loading store data:', err)
     } finally {
@@ -53,7 +61,7 @@ export const StoreProvider = ({ children }) => {
 
   useEffect(() => {
     // Version-based cache bust: if data version changed, clear stale localStorage
-    const DATA_VERSION = 'v5-no-prices-maroon-saree'
+    const DATA_VERSION = 'v6-special-signature-couture'
     const storedVersion = localStorage.getItem('rts_data_version')
     if (storedVersion !== DATA_VERSION) {
       ;['rts_products', 'rts_categories', 'rts_orders', 'rts_settings'].forEach(k => localStorage.removeItem(k))
@@ -70,6 +78,23 @@ export const StoreProvider = ({ children }) => {
       console.error(err)
     }
   }, [])
+
+  // Page view tracking effect
+  useEffect(() => {
+    storeService.trackPageView(currentPage).then(updated => {
+      if (updated) setAnalytics(updated)
+    })
+  }, [currentPage])
+
+  const trackWhatsAppClick = async (source, productName = null) => {
+    const updated = await storeService.trackWhatsAppClick(source, productName)
+    if (updated) setAnalytics(updated)
+  }
+
+  const trackProductView = async (productId) => {
+    const updated = await storeService.trackProductView(productId)
+    if (updated) setAnalytics(updated)
+  }
 
   const toggleWishlist = (productId) => {
     let updated
@@ -127,6 +152,24 @@ export const StoreProvider = ({ children }) => {
     return newComm
   }
 
+  const replyComment = async (commentId, replyText) => {
+    await storeService.replyComment(commentId, replyText)
+    await refreshData()
+    showToast('Reply published to question board! ✨')
+  }
+
+  const deleteComment = async (commentId) => {
+    await storeService.deleteComment(commentId)
+    await refreshData()
+    showToast('Question deleted', 'info')
+  }
+
+  const deleteOrder = async (orderId) => {
+    await storeService.deleteOrder(orderId)
+    await refreshData()
+    showToast('Enquiry deleted', 'info')
+  }
+
   const submitOrder = async (orderData) => {
     const newOrd = await storeService.createOrder(orderData)
     await refreshData()
@@ -145,6 +188,12 @@ export const StoreProvider = ({ children }) => {
     showToast('Studio settings saved!')
   }
 
+  const resetAnalytics = async () => {
+    const reset = await storeService.resetAnalytics()
+    setAnalytics(reset)
+    showToast('Analytics counters reset!')
+  }
+
   return (
     <StoreContext.Provider value={{
       products,
@@ -153,6 +202,7 @@ export const StoreProvider = ({ children }) => {
       comments,
       settings,
       wishlist,
+      analytics,
       loading,
       currentPage,
       selectedProductSlug,
@@ -176,9 +226,15 @@ export const StoreProvider = ({ children }) => {
       saveCategory,
       deleteCategory,
       postComment,
+      replyComment,
+      deleteComment,
+      deleteOrder,
       submitOrder,
       updateOrderStatus,
       updateStoreSettings,
+      trackWhatsAppClick,
+      trackProductView,
+      resetAnalytics,
       refreshData
     }}>
       {children}

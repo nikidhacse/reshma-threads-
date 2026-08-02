@@ -9,7 +9,8 @@ export const Navbar = () => {
     wishlist, 
     setIsWishlistOpen, 
     setIsSearchOpen, 
-    settings 
+    settings,
+    trackWhatsAppClick
   } = useStore()
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -33,8 +34,12 @@ export const Navbar = () => {
     setMobileMenuOpen(false)
   }
 
-  const rawNumber = (settings.whatsapp_number || '+919003539707').replace(/[^0-9]/g, '')
+  const rawNumber = (settings.whatsapp_number || '+917708521531').replace(/[^0-9]/g, '')
   const quickWhatsapp = `https://wa.me/${rawNumber}?text=${encodeURIComponent("Hi Reshma Threads Studio! I'd like to inquire about a custom blouse order.")}`
+
+  const handleWhatsAppNav = () => {
+    trackWhatsAppClick('Navbar Header')
+  }
 
   return (
     <header className={`sticky top-0 z-40 w-full transition-all duration-300 ${
@@ -122,6 +127,7 @@ export const Navbar = () => {
               href={quickWhatsapp}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={handleWhatsAppNav}
               className="hidden sm:flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-3.5 py-2 rounded-xl shadow-sm transition-all"
             >
               <MessageCircle className="w-3.5 h-3.5" />

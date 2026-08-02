@@ -5,7 +5,7 @@ import { storeService } from '../services/storeService'
 import { MessageCircle, Heart, ZoomIn, Star, ChevronLeft, ChevronRight, Sparkles, Package } from 'lucide-react'
 
 export const ShopPage = () => {
-  const { products, settings, toggleWishlist, isWishlisted, setQuickViewProduct } = useStore()
+  const { products, settings, toggleWishlist, isWishlisted, setQuickViewProduct, trackWhatsAppClick, trackProductView } = useStore()
 
   return (
     <div className="py-12 bg-pearl min-h-screen">
@@ -33,9 +33,10 @@ export const ShopPage = () => {
               Our admin is curating exclusive new designs. Check back soon or contact us for a custom creation!
             </p>
             <a
-              href={`https://wa.me/${(settings.whatsapp_number || '+919003539707').replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Hi Reshma! I want a custom blouse. Can you help?')}`}
+              href={`https://wa.me/${(settings.whatsapp_number || '+917708521531').replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Hi Reshma! I want a custom blouse. Can you help?')}`}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackWhatsAppClick('Portfolio Gallery Empty State')}
               className="inline-flex items-center gap-2 bg-emerald-600 text-white font-bold px-6 py-3 rounded-2xl text-sm"
             >
               <MessageCircle className="w-4 h-4" />
@@ -51,7 +52,12 @@ export const ShopPage = () => {
                 settings={settings}
                 toggleWishlist={toggleWishlist}
                 isWishlisted={isWishlisted}
-                onQuickView={setQuickViewProduct}
+                trackWhatsAppClick={trackWhatsAppClick}
+                trackProductView={trackProductView}
+                onQuickView={(p) => {
+                  trackProductView(p.id)
+                  setQuickViewProduct(p)
+                }}
               />
             ))}
           </div>
@@ -63,13 +69,14 @@ export const ShopPage = () => {
   )
 }
 
-const GalleryCard = ({ product, settings, toggleWishlist, isWishlisted, onQuickView }) => {
+const GalleryCard = ({ product, settings, toggleWishlist, isWishlisted, trackWhatsAppClick, onQuickView }) => {
   const [activeImg, setActiveImg] = useState(0)
   const images = product.images || []
   const wishlisted = isWishlisted(product.id)
 
   const handleWA = (e) => {
     e.stopPropagation()
+    trackWhatsAppClick('Portfolio Gallery Item', product.name)
     const link = storeService.generateWhatsAppLink(settings.whatsapp_number, product)
     window.open(link, '_blank')
   }

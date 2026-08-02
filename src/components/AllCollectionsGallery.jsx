@@ -27,7 +27,7 @@ export const AllCollectionsGallery = () => {
           </p>
           <button
             onClick={() => {
-              const rawNumber = (settings.whatsapp_number || '+919003539707').replace(/[^0-9]/g, '')
+              const rawNumber = (settings.whatsapp_number || '+917708521531').replace(/[^0-9]/g, '')
               window.open(`https://wa.me/${rawNumber}?text=${encodeURIComponent('Hi Reshma! I want a custom design. Can you help me?')}`, '_blank')
             }}
             className="inline-flex items-center gap-2 bg-emerald-600 text-white font-bold px-7 py-3.5 rounded-2xl text-sm shadow-lg hover:-translate-y-0.5 transition-all"
@@ -84,7 +84,7 @@ export const AllCollectionsGallery = () => {
           <p className="text-ebony/60 text-sm mb-4">Don't see what you're looking for? We create anything from scratch!</p>
           <button
             onClick={() => {
-              const rawNumber = (settings.whatsapp_number || '+919003539707').replace(/[^0-9]/g, '')
+              const rawNumber = (settings.whatsapp_number || '+917708521531').replace(/[^0-9]/g, '')
               window.open(`https://wa.me/${rawNumber}?text=${encodeURIComponent('Hi Reshma Threads Studio! I have my own design idea and would love to discuss it with you.')}`, '_blank')
             }}
             className="inline-flex items-center gap-2 bg-ebony hover:bg-gold text-gold hover:text-ebony font-bold px-7 py-3.5 rounded-2xl text-sm transition-all duration-300 border border-gold/30 shadow-lg"
