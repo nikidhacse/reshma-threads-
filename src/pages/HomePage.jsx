@@ -84,8 +84,16 @@ export const HomePage = () => {
 
             {/* Text */}
             <div className="space-y-6">
-              <div className="luxury-divider">
-                <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-gold">Our Atelier & Founder Story</span>
+              <div className="flex items-center gap-4">
+                <img
+                  src="/logo.jpg"
+                  alt="Reshma Threads Studio Emblem"
+                  className="w-16 h-16 rounded-full border-2 border-gold/50 shadow-md shrink-0 hover:scale-105 transition-transform"
+                />
+                <div>
+                  <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-gold block">Official Studio Seal</span>
+                  <span className="text-xs text-brown font-semibold">Reshma Threads Boutique</span>
+                </div>
               </div>
 
               <h2 className="font-serif text-4xl lg:text-5xl font-bold text-ebony leading-tight">

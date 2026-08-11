@@ -220,8 +220,8 @@ export const AdminDashboard = () => {
     return (
       <div className="min-h-[80vh] flex items-center justify-center p-4 bg-pearl">
         <div className="bg-white max-w-md w-full p-8 rounded-3xl border border-sand-dark/60 shadow-2xl space-y-6 text-center">
-          <div className="w-16 h-16 bg-ebony text-gold rounded-2xl flex items-center justify-center mx-auto shadow-md border border-gold/30">
-            <Shield className="w-8 h-8" />
+          <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-gold/40 mx-auto shadow-md shrink-0">
+            <img src="/logo.jpg" alt="Studio Logo" className="w-full h-full object-cover" />
           </div>
 
           <div className="space-y-1">
@@ -280,9 +280,7 @@ export const AdminDashboard = () => {
       {/* Top Header */}
       <div className="bg-ebony text-pearl p-6 rounded-3xl border border-gold/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-xl">
         <div className="flex items-center gap-4">
-          <div className="p-3 bg-gold/15 rounded-2xl border border-gold/30 text-gold">
-            <Shield className="w-8 h-8" />
-          </div>
+          <img src="/logo.jpg" alt="Studio Logo" className="w-12 h-12 rounded-full border-2 border-gold/40 shadow-md shrink-0 object-cover" />
           <div>
             <div className="flex items-center gap-2">
               <h1 className="font-serif text-2xl sm:text-3xl font-bold">Studio Management Center</h1>

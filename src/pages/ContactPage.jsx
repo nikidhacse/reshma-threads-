@@ -58,8 +58,11 @@ export const ContactPage = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-widest text-gold bg-sand border border-gold/30 mb-3">
+        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+          <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-4 border-gold/40 shadow-xl mx-auto ring-4 ring-gold/10 hover:scale-105 transition-transform duration-300">
+            <img src="/logo.jpg" alt="Reshma Threads Studio Emblem" className="w-full h-full object-cover" />
+          </div>
+          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-widest text-gold bg-sand border border-gold/30">
             <Sparkles className="w-3.5 h-3.5 text-gold" />
             Connect With Our Atelier
           </span>

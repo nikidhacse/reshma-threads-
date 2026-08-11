@@ -10,8 +10,11 @@ export const AboutPage = () => {
     <div className="max-w-7xl mx-auto px-4 lg:px-8 py-12 space-y-16">
       
       {/* Hero Banner */}
-      <div className="bg-sand-light rounded-3xl p-8 sm:p-14 border border-sand-dark/50 text-center space-y-4">
-        <span className="text-xs font-semibold uppercase tracking-widest text-gold">Our Craftsmanship & Heritage</span>
+      <div className="bg-sand-light rounded-3xl p-8 sm:p-14 border border-sand-dark/50 text-center space-y-4 relative overflow-hidden">
+        <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-full overflow-hidden border-4 border-gold/50 shadow-2xl mx-auto ring-4 ring-gold/10 hover:scale-105 transition-transform duration-300">
+          <img src="/logo.jpg" alt="Reshma Threads Studio Emblem" className="w-full h-full object-cover" />
+        </div>
+        <span className="text-xs font-semibold uppercase tracking-widest text-gold block">Our Craftsmanship & Heritage</span>
         <h1 className="font-serif text-4xl sm:text-6xl font-bold text-ebony">Reshma Threads Studio</h1>
         <p className="text-sm text-gray-600 font-light max-w-2xl mx-auto leading-relaxed">
           Creating timeless luxury couture designed to celebrate India’s rich textile heritage, regal silhouettes, and bespoke elegance.

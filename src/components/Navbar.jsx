@@ -69,17 +69,23 @@ export const Navbar = () => {
           {/* Logo */}
           <button
             onClick={() => handleNavClick('home')}
-            className="cursor-pointer flex flex-col items-center group"
+            className="cursor-pointer flex items-center gap-3 group"
           >
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-gold group-hover:scale-125 transition-transform" />
-              <span className="font-serif text-xl sm:text-2xl font-bold tracking-widest text-ebony group-hover:text-gold transition-colors">
+            <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden border-2 border-gold/40 shadow-sm group-hover:scale-105 group-hover:border-gold transition-all duration-300 shrink-0">
+              <img
+                src="/logo.jpg"
+                alt="Reshma Threads Studio Logo"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="flex flex-col items-start text-left">
+              <span className="font-serif text-lg sm:text-xl font-bold tracking-widest text-ebony group-hover:text-gold transition-colors leading-tight">
                 RESHMA THREADS
               </span>
+              <span className="text-[8px] uppercase tracking-[0.3em] font-bold text-brown/80 -mt-0.5">
+                Studio · Bespoke Boutique
+              </span>
             </div>
-            <span className="text-[8px] uppercase tracking-[0.35em] font-bold text-brown/70 -mt-0.5">
-              Studio · Bespoke Boutique · Chennai
-            </span>
           </button>
 
           {/* Desktop Links */}
@@ -155,9 +161,13 @@ export const Navbar = () => {
         <div className="lg:hidden fixed inset-0 top-[88px] z-50 bg-ebony/60 backdrop-blur-sm animate-fade-in">
           <div className="bg-pearl w-4/5 max-w-sm h-full shadow-2xl flex flex-col justify-between border-r border-gold/20">
             <div className="p-6 space-y-6">
-              <p className="text-[10px] uppercase tracking-widest font-bold text-brown border-b border-sand-dark pb-3">
-                Navigation
-              </p>
+              <div className="flex items-center gap-3 border-b border-sand-dark pb-4">
+                <img src="/logo.jpg" alt="Logo" className="w-12 h-12 rounded-full border-2 border-gold/40 shadow-sm shrink-0" />
+                <div>
+                  <h3 className="font-serif font-bold text-ebony text-sm">Reshma Threads</h3>
+                  <p className="text-[9px] uppercase tracking-widest text-brown font-semibold">Bespoke Studio</p>
+                </div>
+              </div>
               <div className="flex flex-col gap-2">
                 {navLinks.map(link => (
                   <button

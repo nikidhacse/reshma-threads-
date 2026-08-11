@@ -20,13 +20,20 @@ export const Footer = () => {
           
           {/* Brand Info */}
           <div className="space-y-4">
-            <div className="flex flex-col">
-              <span className="font-serif text-2xl font-bold tracking-wider text-gold">
-                RESHMA THREADS
-              </span>
-              <span className="text-[9px] uppercase tracking-[0.3em] text-sand-dark">
-                Studio • Luxury Boutique
-              </span>
+            <div className="flex items-center gap-3.5">
+              <img
+                src="/logo.jpg"
+                alt="Reshma Threads Studio Logo"
+                className="w-14 h-14 rounded-full object-cover border-2 border-gold/40 shadow-lg shrink-0"
+              />
+              <div className="flex flex-col">
+                <span className="font-serif text-2xl font-bold tracking-wider text-gold">
+                  RESHMA THREADS
+                </span>
+                <span className="text-[9px] uppercase tracking-[0.3em] text-sand-dark">
+                  Studio • Luxury Boutique
+                </span>
+              </div>
             </div>
             <p className="text-sm text-gray-300 leading-relaxed font-light">
               Crafting bespoke luxury sarees, handcrafted lehengas, and regal couture designed for life’s grand celebrations.

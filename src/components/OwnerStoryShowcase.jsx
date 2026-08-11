@@ -61,6 +61,9 @@ export const OwnerStoryShowcase = () => {
         
         {/* Header */}
         <div className="text-center space-y-4 max-w-3xl mx-auto">
+          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-gold/50 shadow-2xl mx-auto ring-4 ring-gold/20 hover:scale-105 transition-transform duration-300">
+            <img src="/logo.jpg" alt="Reshma Threads Studio Logo" className="w-full h-full object-cover" />
+          </div>
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-[0.25em] text-gold bg-gold/10 border border-gold/30 shadow-inner">
             <Crown className="w-3.5 h-3.5" />
             Worn & Styled by Our Owner
