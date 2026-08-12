@@ -176,6 +176,116 @@ const INITIAL_PRODUCTS = [
       '/peacock_blue_blouse_back.jpg'
     ],
     created_at: new Date().toISOString()
+  },
+  {
+    id: 'prod-new-001',
+    name: 'Royal Crimson & Champagne Cream Silk Tasselled Half-Saree Set',
+    slug: 'royal-crimson-champagne-cream-silk-tasselled-half-saree-set',
+    category_id: 'cat-1',
+    category_name: 'Signature Collections',
+    description: 'Exclusive boutique half-saree creation featuring a cascading champagne gold pleated silk skirt bordered with traditional crimson zari weaving, paired with a matching zari brocade blouse and draped with a rich crimson silk voni trimmed with handcrafted dual-tone tassels.',
+    fabric_info: 'Pure Champagne Silk Base + Zari Brocade Blouse + Hand-Tasselled Crimson Silk Voni',
+    care_instructions: 'Dry clean only. Store wrapped in cotton saree bag.',
+    sizes: ['Custom Tailored Blouse + Pleated Skirt'],
+    colors: ['Royal Crimson & Champagne Gold'],
+    stock_quantity: 4,
+    in_stock: true,
+    is_featured: true,
+    is_best_seller: true,
+    is_new_arrival: true,
+    sku: 'RTS-HS-003',
+    images: [
+      '/crimson_gold_tassel_halfsaree.jpg'
+    ],
+    created_at: new Date().toISOString()
+  },
+  {
+    id: 'prod-new-002',
+    name: 'Rani Pink & Fine Gold Zari Ready-to-Drape Pre-Pleated Kanjivaram Silk Saree',
+    slug: 'rani-pink-fine-gold-zari-prepleated-kanjivaram-silk-saree',
+    category_id: 'cat-4',
+    category_name: 'Saree Pre-Pleating',
+    description: 'Luxury Kanjivaram silk saree in vibrant Rani Pink woven with all-over gold floral buttas and heavy gold zari border. Masterfully pre-pleated and box-folded so you can drape in under 60 seconds!',
+    fabric_info: 'Pure Kanjivaram Silk Saree + Professional Box-Folding & Pleat Setting',
+    care_instructions: 'Dry clean only. Hang on standard saree hanger.',
+    sizes: ['Ready-to-Drape Pre-Pleated Saree'],
+    colors: ['Rani Pink & Gold Zari'],
+    stock_quantity: 6,
+    in_stock: true,
+    is_featured: true,
+    is_best_seller: true,
+    is_new_arrival: true,
+    sku: 'RTS-PRE-002',
+    images: [
+      '/prepleated_pink_gold_saree.jpg'
+    ],
+    created_at: new Date().toISOString()
+  },
+  {
+    id: 'prod-new-003',
+    name: 'Peacock Blue & Maroon Heritage Silk Langa Voni Set',
+    slug: 'peacock-blue-maroon-heritage-silk-langa-voni-set',
+    category_id: 'cat-1',
+    category_name: 'Signature Collections',
+    description: 'A traditional South Indian heritage half-saree ensemble worn by our founder, combining a deep maroon pleated silk skirt with heavy gold zari borders, maroon brocade blouse, and a draped peacock teal silk dupatta.',
+    fabric_info: 'Pure Maroon Brocade Silk + Peacock Teal Dupatta with Zari Lace Border',
+    care_instructions: 'Dry clean only.',
+    sizes: ['Custom Tailored Blouse + Pleated Skirt'],
+    colors: ['Peacock Teal & Deep Maroon'],
+    stock_quantity: 4,
+    in_stock: true,
+    is_featured: true,
+    is_best_seller: true,
+    is_new_arrival: true,
+    sku: 'RTS-HS-004',
+    images: [
+      '/peacock_maroon_halfsaree_model.jpg'
+    ],
+    created_at: new Date().toISOString()
+  },
+  {
+    id: 'prod-new-004',
+    name: 'Rani Magenta Silk Blouse with Gold Grid Sequin & Emerald Bead Tassels',
+    slug: 'rani-magenta-silk-blouse-gold-grid-sequin-emerald-tassels',
+    category_id: 'cat-2',
+    category_name: 'Bridal Blouses',
+    description: 'Opulent magenta silk Aari blouse designed with an intricate diamond lattice grid of gold sequins, Kundan floral centers, emerald green thread highlights, and hanging crystal bead tassels along the waistline.',
+    fabric_info: 'Pure Raw Silk Base + Hand Zardozi, Sequin Grid, Kundan & Emerald Bead Tassels',
+    care_instructions: 'Dry clean only.',
+    sizes: ['Bespoke Custom Tailored to Your Measurements'],
+    colors: ['Rani Magenta & Gold Emerald'],
+    stock_quantity: 5,
+    in_stock: true,
+    is_featured: true,
+    is_best_seller: true,
+    is_new_arrival: true,
+    sku: 'RTS-BL-003',
+    images: [
+      '/magenta_gold_grid_blouse.jpg'
+    ],
+    created_at: new Date().toISOString()
+  },
+  {
+    id: 'prod-new-005',
+    name: 'Charcoal Grey Satin Silk Blouse with Bow-Tie Back & Pearl Edging',
+    slug: 'charcoal-grey-satin-silk-blouse-bow-tie-back-pearl-edging',
+    category_id: 'cat-3',
+    category_name: 'Aari & Cut-Work',
+    description: 'Modern luxury fusion blouse in rich charcoal grey satin featuring a geometric V-cut open back trimmed with fine pearl piping and tied with a chic bow accent anchored by a pearl brooch.',
+    fabric_info: 'High-Lustre Satin Silk Base + Fine Hand Pearl Beading & Brooch Accent',
+    care_instructions: 'Dry clean only.',
+    sizes: ['Bespoke Custom Tailored to Your Measurements'],
+    colors: ['Charcoal Grey & White Pearl'],
+    stock_quantity: 5,
+    in_stock: true,
+    is_featured: true,
+    is_best_seller: true,
+    is_new_arrival: true,
+    sku: 'RTS-BL-004',
+    images: [
+      '/charcoal_grey_pearl_blouse.jpg'
+    ],
+    created_at: new Date().toISOString()
   }
 ]
 

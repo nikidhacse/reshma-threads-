@@ -48,6 +48,40 @@ export const OwnerStoryShowcase = () => {
         'Personalized Color Palette Matching'
       ],
       whatsappDetails: 'Model: Royal Crimson & Gold Half-Saree set worn by the owner.'
+    },
+    {
+      id: 'founder-peacock-maroon-halfsaree',
+      title: 'Peacock Teal & Deep Maroon Heritage Langa Voni',
+      subtitle: 'Heritage Silk Drape Worn & Styled by Our Owner',
+      tag: 'Owner\'s Signature 💎',
+      image: '/peacock_maroon_halfsaree_model.jpg',
+      badgeColor: 'bg-teal-900/80 text-teal-200 border-teal-500/30',
+      description:
+        'A vibrant South Indian heritage drape styled personally by our studio owner, featuring a deep maroon pleated silk skirt with heavy gold zari borders, maroon brocade blouse, and peacock teal silk dupatta.',
+      highlights: [
+        'Pure Brocade Silk Skirt & Blouse',
+        'Contrast Peacock Teal Silk Dupatta',
+        'Hand-Stitched Traditional Zari Lace',
+        'Custom Size Tailoring Included'
+      ],
+      whatsappDetails: 'Model: Peacock Teal & Deep Maroon Heritage Langa Voni set worn by the owner.'
+    },
+    {
+      id: 'founder-crimson-tassel-halfsaree',
+      title: 'Royal Crimson & Champagne Cream Tasselled Half-Saree',
+      subtitle: 'Handcrafted Tassel Dupatta & Zari Border Set',
+      tag: 'Studio Highlight 🌺',
+      image: '/crimson_gold_tassel_halfsaree.jpg',
+      badgeColor: 'bg-rose-900/80 text-rose-200 border-rose-500/30',
+      description:
+        'An exquisite dual-tone silk half-saree styled by our founder, combining a cascading champagne cream pleated skirt with heavy zari border, crimson brocade sleeves, and hand-woven tassels on the pallu.',
+      highlights: [
+        'Hand-Crafted Dual-Tone Tasselled Dupatta',
+        'Champagne Cream & Crimson Silk Palette',
+        'Bespoke Blouse Neckline Options',
+        'Pan-India Tracked Express Delivery'
+      ],
+      whatsappDetails: 'Model: Royal Crimson & Champagne Cream Tasselled Half-Saree set worn by the owner.'
     }
   ]
 
