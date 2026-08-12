@@ -132,6 +132,50 @@ const INITIAL_PRODUCTS = [
       '/maroon_kanjivaram_2.jpg'
     ],
     created_at: new Date().toISOString()
+  },
+  {
+    id: 'prod-blouse-001',
+    name: 'Sea Green Silk Blouse with Gold Beadwork & Floral Buttis',
+    slug: 'sea-green-silk-blouse-gold-beadwork',
+    category_id: 'cat-2',
+    category_name: 'Bridal Blouses',
+    description: 'A charming sea-green raw silk blouse crafted with an elegant deep round back neck bordered in gold beaded piping and delicately scattered gold lotus buttis across the body.',
+    fabric_info: 'Pure Raw Silk Base + Hand Gold Beadwork & Zari Embroidery',
+    care_instructions: 'Dry clean only.',
+    sizes: ['Bespoke Custom Tailored to Your Measurements'],
+    colors: ['Sea Green & Gold'],
+    stock_quantity: 5,
+    in_stock: true,
+    is_featured: true,
+    is_best_seller: true,
+    is_new_arrival: true,
+    sku: 'RTS-BL-001',
+    images: [
+      '/mint_green_blouse_back.jpg'
+    ],
+    created_at: new Date().toISOString()
+  },
+  {
+    id: 'prod-blouse-002',
+    name: 'Peacock Blue Silk Blouse with Zardozi Border & Hanging Crystal Tassels',
+    slug: 'peacock-blue-silk-blouse-zardozi-tassels',
+    category_id: 'cat-2',
+    category_name: 'Bridal Blouses',
+    description: 'An exquisite peacock blue raw silk bridal blouse featuring a grand U-cut back framed by heavy floral gold zardozi embroidery, emerald bead strands, and hanging crystal tassels.',
+    fabric_info: 'Pure Raw Silk Base + Hand Zardozi, Kundan & Emerald Crystal Tassels',
+    care_instructions: 'Dry clean only.',
+    sizes: ['Bespoke Custom Tailored to Your Measurements'],
+    colors: ['Peacock Blue & Gold Zardozi'],
+    stock_quantity: 5,
+    in_stock: true,
+    is_featured: true,
+    is_best_seller: true,
+    is_new_arrival: true,
+    sku: 'RTS-BL-002',
+    images: [
+      '/peacock_blue_blouse_back.jpg'
+    ],
+    created_at: new Date().toISOString()
   }
 ]
 

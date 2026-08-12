@@ -8,10 +8,10 @@ export const SketchToFinishSection = () => {
   const [activeTab, setActiveTab] = useState('sketch') // 'sketch' or 'finish' or 'split'
 
   const showcaseItem = {
-    sketchTitle: "Hand-Sketched Maggam & Cut-Work Pattern",
-    finishTitle: "Completed Masterpiece Cut-Work Blouse",
-    sketchImg: "/insta_purple_maggam_frame.jpg",
-    finishImg: "/insta_purple_backneck.jpg",
+    sketchTitle: "Hand-Crafted Mint Green Silk & Gold Piping Work",
+    finishTitle: "Peacock Blue Zardozi & Hanging Tassel Masterpiece",
+    sketchImg: "/mint_green_blouse_back.jpg",
+    finishImg: "/peacock_blue_blouse_back.jpg",
     description: "Every bespoke blouse begins as a clean paper sketch & stretched raw fabric on our traditional wooden frame. Our artisans then hand-embroider every bead, zardozi thread, and cut-work detail before final master tailoring."
   }
 
@@ -88,7 +88,7 @@ export const SketchToFinishSection = () => {
                       : 'text-ebony/70 hover:text-ebony'
                   }`}
                 >
-                  🧵 1. Tracing & Frame Work
+                  🪡 1. Mint Green Beadwork
                 </button>
                 <button
                   onClick={() => setActiveTab('finish')}
@@ -98,7 +98,7 @@ export const SketchToFinishSection = () => {
                       : 'text-ebony/70 hover:text-ebony'
                   }`}
                 >
-                  ✨ 2. Stitched Masterpiece
+                  ✨ 2. Peacock Blue Tassel Blouse
                 </button>
               </div>
 

@@ -61,7 +61,7 @@ export const StoreProvider = ({ children }) => {
 
   useEffect(() => {
     // Version-based cache bust: if data version changed, clear stale localStorage
-    const DATA_VERSION = 'v7-live-accurate-data-zero-demo'
+    const DATA_VERSION = 'v8-new-blouse-pictures-craft-process'
     const storedVersion = localStorage.getItem('rts_data_version')
     if (storedVersion !== DATA_VERSION) {
       ;['rts_products', 'rts_categories', 'rts_orders', 'rts_comments', 'rts_analytics', 'rts_settings'].forEach(k => localStorage.removeItem(k))
