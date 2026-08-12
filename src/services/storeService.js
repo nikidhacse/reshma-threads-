@@ -135,45 +135,9 @@ const INITIAL_PRODUCTS = [
   }
 ]
 
-const INITIAL_ORDERS = [
-  {
-    id: 'ord-901',
-    order_ref: 'RTS-2026-0901',
-    customer_name: 'Samyuktha Ramesh',
-    customer_phone: '+91 77085 21531',
-    customer_email: 'samyuktha.r@example.com',
-    product_id: 'prod-sig-001',
-    product_name: 'Royal Lavender Kanjivaram Silk Saree & Handcrafted Cut-Work Blouse Set',
-    product_price: 8500,
-    selected_size: 'Custom Blouse Size 36',
-    selected_color: 'Royal Lavender & Silver Zari',
-    notes: 'Requested pre-pleated saree with custom sweetheart cut-work back blouse.',
-    status: 'New',
-    channel: 'WhatsApp',
-    created_at: '2026-07-29T10:00:00Z'
-  }
-]
+const INITIAL_ORDERS = []
 
-const INITIAL_COMMENTS = [
-  {
-    id: 'c-1',
-    name: 'Pooja Sundaram',
-    email: 'pooja@example.com',
-    message: 'Can the sweetheart cut-work neck on the Royal Lavender set be tailored with a higher neck depth for my saree?',
-    design_code: 'RTS-SIG-001',
-    reply: 'Yes, absolutely! Every blouse is stitched 100% to your neck depth & armhole measurements. Share your requirements on WhatsApp.',
-    created_at: '2026-07-29T12:30:00Z'
-  },
-  {
-    id: 'c-2',
-    name: 'Anitha Krishnan',
-    email: 'anitha.k@example.com',
-    message: 'Do you offer outstation courier delivery with pre-pleated saree pin settings to Bangalore?',
-    design_code: 'General Query',
-    reply: 'Yes! We box-fold and pin-set pre-pleated sarees securely and courier pan India with full tracking.',
-    created_at: '2026-07-29T14:15:00Z'
-  }
-]
+const INITIAL_COMMENTS = []
 
 const INITIAL_SETTINGS = {
   whatsapp_number: '+917708521531',
@@ -454,33 +418,19 @@ export const storeService = {
   // --- ANALYTICS & VISITOR TRACKING ---
   async getAnalytics() {
     return getStorageItem('analytics', {
-      totalPageViews: 142,
+      totalPageViews: 0,
       pageViews: {
-        home: 84,
-        shop: 38,
-        contact: 20
+        home: 0,
+        shop: 0,
+        contact: 0,
+        about: 0
       },
       whatsappClicks: {
-        total: 29,
-        bySource: {
-          'Floating WhatsApp Widget': 11,
-          'Flagship Collection Showcase': 8,
-          'Boutique Gallery': 5,
-          'Contact Page Consultation': 3,
-          'Navbar Header': 2
-        },
-        logs: [
-          { id: 'w-101', source: 'Flagship Collection Showcase', product: 'Royal Lavender Kanjivaram Silk Saree Set', timestamp: '2026-08-01T14:22:00Z' },
-          { id: 'w-102', source: 'Floating WhatsApp Widget', product: 'General Studio Inquiry', timestamp: '2026-08-01T15:10:00Z' },
-          { id: 'w-103', source: 'Boutique Gallery', product: 'Deep Maroon & Gold Zari Kanjivaram Saree', timestamp: '2026-08-01T16:05:00Z' },
-          { id: 'w-104', source: 'Contact Page Consultation', product: 'Custom Blouse Consultation', timestamp: '2026-08-01T16:45:00Z' },
-          { id: 'w-105', source: 'Floating WhatsApp Widget', product: 'General Studio Inquiry', timestamp: '2026-08-01T17:02:00Z' }
-        ]
+        total: 0,
+        bySource: {},
+        logs: []
       },
-      productViews: {
-        'prod-sig-001': 95,
-        'prod-sig-002': 47
-      }
+      productViews: {}
     })
   },
 

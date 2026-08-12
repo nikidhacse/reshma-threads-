@@ -61,10 +61,10 @@ export const StoreProvider = ({ children }) => {
 
   useEffect(() => {
     // Version-based cache bust: if data version changed, clear stale localStorage
-    const DATA_VERSION = 'v6-special-signature-couture'
+    const DATA_VERSION = 'v7-live-accurate-data-zero-demo'
     const storedVersion = localStorage.getItem('rts_data_version')
     if (storedVersion !== DATA_VERSION) {
-      ;['rts_products', 'rts_categories', 'rts_orders', 'rts_settings'].forEach(k => localStorage.removeItem(k))
+      ;['rts_products', 'rts_categories', 'rts_orders', 'rts_comments', 'rts_analytics', 'rts_settings'].forEach(k => localStorage.removeItem(k))
       localStorage.setItem('rts_data_version', DATA_VERSION)
     }
 
